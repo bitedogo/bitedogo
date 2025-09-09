@@ -18,4 +18,5 @@
 - ⚡ 재미있는 사실: ...
 -->
 
-<img src="https://capsule-render.vercel.app/api?type=rounded&color=0a192f&height=150&section=footer&text=방문해주셔서 감사합니다!&fontSize=30" />
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0a192f&height=80&section=footer&text=방문해주셔서+감사합니다!&fontSize=25" />
+
