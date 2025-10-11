@@ -67,21 +67,12 @@ const developer = {
 
 ---
 
-## 🔥 Featured Projects
-
-<div align="center">
-
-[![Project 1](https://github-readme-stats.vercel.app/api/pin/?username=bitedogo&repo=project1&theme=tokyonight&hide_border=true)](https://github.com/bitedogo/project1)
-[![Project 2](https://github-readme-stats.vercel.app/api/pin/?username=bitedogo&repo=project2&theme=tokyonight&hide_border=true)](https://github.com/bitedogo/project2)
-
-</div>
-
 ---
 
 ## 💼 What I'm Up To
 
-- 🔭 Currently working on **[Your Current Project]**
-- 🌱 Learning **[Technology you're learning]**
+- 🔭 Currently working on **Full Stack Web Development Projects**
+- 🌱 Learning **Advanced React & Spring Boot**
 - 👯 Looking to collaborate on **Open Source Projects**
 - 💬 Ask me about **JavaScript, React, Spring Boot**
 - ⚡ Fun fact: **I love solving algorithmic challenges**
