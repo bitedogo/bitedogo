@@ -5,7 +5,7 @@
   
 ![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&multiline=true&width=600&height=100&lines=Full+Stack+Developer;Problem+Solver;Tech+Enthusiast)
 
-[![GitHub followers](https://img.shields.io/github/followers/yourusername?style=social)](https://github.com/yourusername)
+[![GitHub followers](https://img.shields.io/github/followers/bitedogo?style=social)](https://github.com/bitedogo)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/yourprofile)
 [![Email](https://img.shields.io/badge/Email-Contact-red?style=flat-square&logo=gmail&logoColor=white)](mailto:your.email@example.com)
 
@@ -57,11 +57,11 @@ const developer = {
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=bitedogo&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&theme=tokyonight&hide_border=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=bitedogo&layout=compact&theme=tokyonight&hide_border=true)
 
-![GitHub Streak](https://streak-stats.demolab.com/?user=yourusername&theme=tokyonight&hide_border=true)
+![GitHub Streak](https://streak-stats.demolab.com/?user=bitedogo&theme=tokyonight&hide_border=true)
 
 </div>
 
@@ -71,8 +71,8 @@ const developer = {
 
 <div align="center">
 
-[![Project 1](https://github-readme-stats.vercel.app/api/pin/?username=yourusername&repo=project1&theme=tokyonight&hide_border=true)](https://github.com/yourusername/project1)
-[![Project 2](https://github-readme-stats.vercel.app/api/pin/?username=yourusername&repo=project2&theme=tokyonight&hide_border=true)](https://github.com/yourusername/project2)
+[![Project 1](https://github-readme-stats.vercel.app/api/pin/?username=bitedogo&repo=project1&theme=tokyonight&hide_border=true)](https://github.com/bitedogo/project1)
+[![Project 2](https://github-readme-stats.vercel.app/api/pin/?username=bitedogo&repo=project2&theme=tokyonight&hide_border=true)](https://github.com/bitedogo/project2)
 
 </div>
 
@@ -92,7 +92,7 @@ const developer = {
 
 <div align="center">
 
-![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=yourusername&theme=tokyo-night&hide_border=true&area=true)
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=bitedogo&theme=tokyo-night&hide_border=true&area=true)
 
 </div>
 
@@ -119,6 +119,6 @@ const developer = {
 
 **Thanks for visiting! 😊**
 
-![Visitor Count](https://komarev.com/ghpvc/?username=yourusername&color=blue&style=flat)
+![Visitor Count](https://komarev.com/ghpvc/?username=bitedogo&color=blue&style=flat)
 
 </div>
