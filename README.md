@@ -29,3 +29,48 @@ const developer = {
     currentFocus: "Building full-stack web applications",
     funFact: "I debug with console.log and I'm not ashamed of it 🐛"
 };
+🛠️ Tech Stack
+<div align="center">
+
+Languages
+Frontend
+Backend & Database
+Tools & Design
+</div>
+
+📊 GitHub Stats
+<div align="center">
+
+</div>
+
+💼 What I'm Up To
+🔭 Currently working on Full Stack Web Development Projects
+
+🌱 Learning Advanced React & Spring Boot
+
+👯 Looking to collaborate on Open Source Projects
+
+💬 Ask me about JavaScript, React, Spring Boot
+
+⚡ Fun fact: I love solving algorithmic challenges
+
+📈 Activity Graph
+<div align="center">
+
+</div>
+
+🤝 Let's Connect
+<div align="center">
+
+</div>
+
+<div align="center">   
+
+💭 Random Dev Quote
+</div>
+
+<div align="center">
+
+Thanks for visiting! 😊
+
+</div>
