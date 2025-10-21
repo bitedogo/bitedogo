@@ -19,26 +19,19 @@
 
 <img align="right" alt="Coding" width="400" src="https://raw.githubusercontent.com/devSouvik/devSouvik/master/gif3.gif">
 
-```typescript
-interface Developer {
-  name: string;
-  location: string;
-  role: string;
-  languages: string[];
-  focus: string;
-  passion: string;
-}
+<br/>
 
-const bitedogo: Developer = {
-  name: "bitedogo",
-  location: "Seoul, South Korea 🇰🇷",
-  role: "Full Stack Developer",
-  languages: ["JavaScript", "Java", "Dart"],
-  focus: "Building scalable web applications",
-  passion: "Turning ideas into reality through code"
-};
-```
+**📍 Location:** Seoul, South Korea 🇰🇷
 
+**💼 Role:** Full Stack Developer
+
+**💻 Languages:** JavaScript, Java, Dart
+
+**🎯 Focus:** Building scalable web applications
+
+**✨ Passion:** Turning ideas into reality through code
+
+<br/>
 <br/>
 <br/>
 
