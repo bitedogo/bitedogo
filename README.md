@@ -17,7 +17,11 @@
 
 ## 🚀 About Me
 
-<img align="right" alt="Coding" width="400" src="https://raw.githubusercontent.com/devSouvik/devSouvik/master/gif3.gif">
+<div align="center">
+
+<img alt="Coding" width="500" src="https://raw.githubusercontent.com/devSouvik/devSouvik/master/gif3.gif">
+
+</div>
 
 <br/>
 
@@ -31,8 +35,6 @@
 
 **✨ Passion:** Turning ideas into reality through code
 
-<br/>
-<br/>
 <br/>
 
 <div align="center">
