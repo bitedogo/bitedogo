@@ -83,4 +83,195 @@
 
 ## 📊 GitHub Analytics
 
-<img height="180em" src="https
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=bitedogo&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bitedogo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117"/>
+
+<br/>
+
+![GitHub Streak](https://streak-stats.demolab.com?user=bitedogo&theme=tokyonight&hide_border=true&background=0d1117&stroke=00D9FF&ring=00D9FF&fire=FF6B6B&currStreakLabel=00D9FF)
+
+<br/>
+
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=bitedogo&bg_color=0d1117&color=00d9ff&line=00d9ff&point=ff6b6b&area=true&hide_border=true)
+
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+<div align="center">
+
+## 🎯 Featured Projects
+
+</div>
+
+<br/>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 💿 ORU (오루)
+
+**음악 리뷰 및 소통 플랫폼**
+
+<br/>
+
+음악에 대한 감상을 자유롭게 공유하고, 국내외 음원 데이터를 교차 검증하여 최적의 음악 탐색 환경을 제공하는 서비스입니다.
+
+<br/>
+
+**🛠 Tech Stack**
+
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+
+**✨ Key Features**
+
+- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 데이터 누락을 보완하고 중복을 제거하는 검색 엔드포인트 구축
+- 🛡️ **조회수 어뷰징 방지 및 검증:** 클라이언트 `sessionStorage`를 활용한 중복 호출 방지와 백엔드 서버 세션 검증 구조를 결합하여 게시글 새로고침 어뷰징 및 작성자 본인 조회수 증가 차단
+- 🔄 **안전한 데이터 소스 분기 및 매핑:** 기존 iTunes 데이터 구조를 유연하게 유지하면서 신규 Deezer 데이터 포맷을 수용할 수 있도록 데이터베이스 스키마 확장 및 프론트엔드 타입 분기 렌더링 구현
+- 🎨 **인터랙티브 클라이언트 UI/UX:** 실시간 조회수 화면 반영 등 검색 및 상세 페이지 내 클라이언트 컴포넌트(`useEffect` 훅 활용) 로직 최적화 및 상태 관리
+
+**👨‍💻 Role:** 3인 팀 프로젝트 (백엔드 아키텍처 & 프론트엔드 연동 개발)
+
+**📅 Duration:** 진행 중 (2025.11 - Present)
+
+<br/>
+
+<a href="https://www.comeonoru.com" target="_blank">
+<img src="https://img.shields.io/badge/Live_Site-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white"/>
+</a>
+<a href="#">
+<img src="https://img.shields.io/badge/View_Repository-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🐱 JavaNyang
+
+**실시간 자바 퀴즈 대전 플랫폼**
+
+<br/>
+
+실시간 대결과 랭킹 시스템을 통해 학습 동기를 부여하는 인터랙티브 학습 플랫폼입니다.
+
+<br/>
+
+**🛠 Tech Stack**
+
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+
+**✨ Key Features**
+
+- 🎮 WebSocket 기반 실시간 1:1 퀴즈 대전
+- 💬 실시간 채팅 시스템 구현
+- 📊 난이도별 자동 경험치 부여
+- 🏆 업적 및 랭킹 시스템
+- ⚙️ 관리자 대시보드 (회원/문제 관리)
+- 💾 효율적인 DB 설계 및 최적화
+
+**👨‍💻 Role:** Team Leader, Frontend & DB
+
+**📅 Duration:** 2 months (2025.05 - 2025.07)
+
+<br/>
+
+<a href="https://github.com/hyunsupLee/JavaNyang.git">
+<img src="https://img.shields.io/badge/View_Repository-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://docs.google.com/presentation/d/1TA1lQMKMNWsvSufgtsyLxarcmcRirishBRSCtQrsB6A/edit?usp=sharing">
+<img src="https://img.shields.io/badge/Presentation-EA4335?style=for-the-badge&logo=google&logoColor=white"/>
+</a>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📚 Studyo
+
+**스터디 그룹 모집 플랫폼**
+
+<br/>
+
+모집부터 활동까지 원스톱으로 지원하는 통합 협업 플랫폼입니다.
+
+<br/>
+
+**🛠 Tech Stack**
+
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Spring Boot](https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Oracle](https://img.shields.io/badge/-Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)
+![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+
+**✨ Key Features**
+
+- 👤 직관적인 마이페이지 UI/UX
+- 🎨 재사용 가능한 모달 컴포넌트
+- 📅 그룹 스케줄 캘린더
+- 🔔 실시간 알림 시스템
+- ☁️ AWS 기반 안정적인 배포
+- 🔗 RESTful API 설계
+
+**👨‍💻 Role:** Frontend & Backend Developer
+
+**📅 Duration:** 1 month (2025.07 - 2025.08)
+
+<br/>
+
+<a href="https://github.com/hyunsupLee/react-study-o.git">
+<img src="https://img.shields.io/badge/Frontend_Repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://github.com/hyunsupLee/tjspring.git">
+<img src="https://img.shields.io/badge/Backend_Repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://www.figma.com/deck/wcNAN0dl7TiPoTO4TzYsaJ/StudyO-PPT?node-id=1-140&t=luXpFAMdXpBx1cVP-1">
+<img src="https://img.shields.io/badge/Presentation-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
+</a>
+
+</td>
+<td width="50%" valign="top">
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 💼 Current Focus
+
+```mermaid
+mindmap
+  root((bitedogo))
+    Full Stack Development
+      React Advanced Patterns
+      Spring Boot Microservices
+      Database Optimization
+    Open Source
+      Contributing to Projects
+      Building Tools
+    Learning
+      New Technologies
+      Best Practices
+      Design Patterns
+    Collaboration
+      Team Projects
+      Code Reviews
+      Knowledge Sharing
