@@ -116,7 +116,7 @@
 
 <br/>
 
-음악에 대한 감상을 공유하고, 다양한 스트리밍 플랫폼과 연동하여 최적의 음악 탐색 환경을 제공하는 서비스입니다.
+음악에 대한 감상을 자유롭게 공유하고, 국내외 음원 데이터를 교차 검증하여 최적의 음악 탐색 환경을 제공하는 서비스입니다.
 
 <br/>
 
@@ -129,23 +129,23 @@
 
 **✨ Key Features**
 
-- 🎼 **하이브리드 음악 검색:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)의 병렬 동시 호출을 통한 데이터 보완 및 검색 최적화
-- 🔗 **외부 스트리밍 원클릭 연동:** 곡 정보 기반의 동적 쿼리를 생성하여 YouTube Music, Spotify, Apple Music 검색 페이지 직접 연결
-- 🛡️ **조회수 어뷰징 방지:** 클라이언트 `sessionStorage`와 백엔드 세션 검증을 결합하여 무분별한 새로고침 및 작성자 본인 조회수 제한
-- ⚙️ **CI/CD 트러블슈팅:** 프롭스 구조 변경에 따른 Vercel 빌드 캐시 정합성 오류 해결 및 인프라 배포 안정화
+- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 데이터 누락을 보완하고 중복을 제거하는 검색 엔드포인트 구축
+- 🛡️ **조회수 어뷰징 방지 및 검증:** 클라이언트 `sessionStorage`를 활용한 중복 호출 방지와 백엔드 서버 세션 검증 구조를 결합하여 게시글 새로고침 어뷰징 및 작성자 본인 조회수 증가 차단
+- 🔄 **안전한 데이터 소스 분기 및 매핑:** 기존 iTunes 데이터 구조를 유연하게 유지하면서 신규 Deezer 데이터 포맷을 수용할 수 있도록 데이터베이스 스키마 확장 및 프론트엔드 타입 분기 렌더링 구현
+- 🎨 **인터랙티브 클라이언트 UI/UX:** 실시간 조회수 화면 반영 등 검색 및 상세 페이지 내 클라이언트 컴포넌트(`useEffect` 훅 활용) 로직 최적화 및 상태 관리
 
-**👨‍💻 Role:** 1인 개발 (Solo Project)
+**👨‍💻 Role:** 3인 팀 프로젝트 (백엔드 아키텍처 & 프론트엔드 연동 개발)
 
 **📅 Duration:** 진행 중 (2025.11 - Present)
 
 <br/>
 
+<a href="https://www.comeonoru.com" target="_blank">
+<img src="https://img.shields.io/badge/Live_Site-00D9FF?style=for-the-badge&logo=googlechrome&logoColor=white"/>
+</a>
 <a href="#">
 <img src="https://img.shields.io/badge/View_Repository-181717?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
-
-</td>
-<td width="50%" valign="top">
 
 ### 🐱 JavaNyang
 
