@@ -131,14 +131,18 @@
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-**✨ Key Features**
+**✨ Key Features & Contributions**
 
-- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 데이터 누락을 보완하고 중복을 제거하는 검색 엔드포인트 구축
-- 🛡️ **조회수 어뷰징 방지 및 검증:** 클라이언트 `sessionStorage`를 활용한 중복 호출 방지와 백엔드 서버 세션 검증 구조를 결합하여 게시글 새로고침 어뷰징 및 작성자 본인 조회수 증가 차단
-- 🔄 **안전한 데이터 소스 분기 및 매핑:** 기존 iTunes 데이터 구조를 유연하게 유지하면서 신규 Deezer 데이터 포맷을 수용할 수 있도록 데이터베이스 스키마 확장 및 프론트엔드 타입 분기 렌더링 구현
-- 🎨 **인터랙티브 클라이언트 UI/UX:** 실시간 조회수 화면 반영 등 검색 및 상세 페이지 내 클라이언트 컴포넌트(`useEffect` 훅 활용) 로직 최적화 및 상태 관리
+- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 데이터 누락 보완 및 중복을 제거한 통합 검색 엔드포인트 전담 개발
+- 🛡️ **조회수 어뷰징 방지 및 검증:** 클라이언트 `sessionStorage`와 백엔드 서버 세션 검증 구조를 결합하여 게시글 새로고침 및 작성자 본인의 무분별한 조회수 증가 어뷰징 완벽 차단
 
-**👨‍💻 Role:** 3인 팀 프로젝트 (백엔드 아키텍처 & 프론트엔드 연동 개발)
+**💥 Troubleshooting & Impact**
+
+- **이종 API 결합 시의 데이터 병목 및 포맷 충돌**
+  - *Challenge:* 두 외부 API의 응답 속도 차이로 검색 지연이 발생하고, 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발
+  - *Solution:* 복수 API 최적화 병렬 호출 구조로 전환하여 검색 응답 시간을 크게 단축하고, 유연한 DB 확장 스키마 설계 및 TypeScript 유니온 타입을 활용한 안전한 분기 렌더링 구현
+
+**👨‍💻 Role:** 3인 팀 프로젝트 (백엔드 아키텍처 100% 구축 & 프론트엔드 연동)
 
 **📅 Duration:** 진행 중 (2025.11 - Present)
 
@@ -172,18 +176,20 @@
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
-**✨ Key Features**
+**✨ Key Features & Contributions**
 
-- 🎮 WebSocket 기반 실시간 1:1 퀴즈 대전
-- 💬 실시간 채팅 시스템 구현
-- 📊 난이도별 자동 경험치 부여
-- 🏆 업적 및 랭킹 시스템
-- ⚙️ 관리자 대시보드 (회원/문제 관리)
-- 💾 효율적인 DB 설계 및 최적화
+- 🎮 **실시간 퀴즈 대전 시스템:** WebSocket 기반의 실시간 1:1 매칭 및 실시간 채팅 룸 구축 전담
+- 📊 **데이터 모델링 & 운영 인프라:** 난이도별 경험치, 업적, 실시간 랭킹 시스템을 위한 효율적인 DB 설계 및 데이터 관리용 어드민 대시보드 개발
 
-**👨‍💻 Role:** Team Leader, Frontend & DB
+**💥 Troubleshooting & Impact**
 
-**📅 Duration:** 2 months (2025.05 - 2025.07)
+- **동시성 트래픽 집중 시 실시간 상태 동기화 지연**
+  - *Challenge:* 다수 사용자가 동시에 퀴즈 대전에 진입할 때 세션 검증 오버헤드와 소켓 커넥션 지연 발생
+  - *Solution:* 실시간 데이터 상태 업데이트 주기 최적화 및 유기적인 세션 관리 로직 고도화로 인게임 튕김 현상을 없애고 대전 데이터 정밀 동기화 달성
+
+**👨‍💻 Role:** Team Leader, Frontend & DB (기획 및 전체 아키텍처 리드)
+
+**📅 Duration:** 2개월 (2025.05 - 2025.07)
 
 <br/>
 
@@ -217,18 +223,20 @@
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
 ![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 
-**✨ Key Features**
+**✨ Key Features & Contributions**
 
-- 👤 직관적인 마이페이지 UI/UX
-- 🎨 재사용 가능한 모달 컴포넌트
-- 📅 그룹 스케줄 캘린더
-- 🔔 실시간 알림 시스템
-- ☁️ AWS 기반 안정적인 배포
-- 🔗 RESTful API 설계
+- 👤 **직관적인 UX/UI 구현:** 공통 모달 및 재사용 가능한 상태 기반 컴포넌트 설계로 프론트엔드 생산성 향상, 캘린더 연동 및 실시간 알림 피드 시스템 구현
+- 🔗 **RESTful API 설계 및 Cloud 배포:** Oracle DB를 기반으로 스터디 매칭 도메인 API를 설계하고, AWS EC2 인프라 인스턴스를 통해 유저에게 안정적인 서비스 배포
 
-**👨‍💻 Role:** Frontend & Backend Developer
+**💥 Troubleshooting & Impact**
 
-**📅 Duration:** 1 month (2025.07 - 2025.08)
+- **RESTful API 응답 지연 및 비효율적 컴포넌트 렌더링**
+  - *Challenge:* 스터디 스케줄 데이터 조회 시 연관 테이블 조인 오버헤드로 인한 프론트엔드 UI 버벅임 현상 발생
+  - *Solution:* API 쿼리 튜닝 및 필요한 데이터만 명확하게 반환하도록 DTO 구조를 단순화하고, React 컴포넌트 내 불필요한 재렌더링 트리거를 제거하여 전체 렌더링 속도 최적화
+
+**👨‍💻 Role:** Frontend & Backend Developer (풀스택 기능 개발 및 인프라 구축)
+
+**📅 Duration:** 1개월 (2025.07 - 2025.08)
 
 <br/>
 
