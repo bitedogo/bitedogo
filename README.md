@@ -53,6 +53,7 @@
 ### ⚛️ Frontend Development
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -126,25 +127,29 @@
 
 **🛠 Tech Stack**
 
-![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Vue.js](https://img.shields.io/badge/-Vue.js-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D)
+![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
 ![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
 **✨ Key Features & Contributions**
 
-- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API(고화질 메타데이터)와 iTunes API(K-POP 특화)를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 데이터 누락 보완 및 중복을 제거한 통합 검색 엔드포인트 전담 개발
-- 🛡️ **조회수 어뷰징 방지 및 검증:** 클라이언트 `sessionStorage`와 백엔드 서버 세션 검증 구조를 결합하여 게시글 새로고침 및 작성자 본인의 무분별한 조회수 증가 어뷰징 완벽 차단
+- 🎼 **하이브리드 음악 검색 아키텍처:** Deezer API와 iTunes API를 백엔드에서 병렬 동시 호출(`Promise.all`)하여 K-POP 및 글로벌 음원 누락을 보완하는 통합 검색 엔진 전담 개발
+- 🛡️ **조회수 검증 및 어뷰징 방지:** 클라이언트 `sessionStorage`와 서버 세션 상태 검증 구조를 결합하여 게시글 새로고침 어뷰징 및 무분별한 조회수 증가 완전 차단
+- 🔄 **멀티 프론트엔드 연동 & 확장 데이터 매핑:** Next.js 및 Vue.js 환경에 대응하는 확장형 Supabase 스키마를 설계하고 TypeScript 유니온 타입을 활용해 안정적인 데이터 분기 렌더링 구현
 
 **💥 Troubleshooting & Impact**
 
 - **이종 API 결합 시의 데이터 병목 및 포맷 충돌**
-  - *Challenge:* 두 외부 API의 응답 속도 차이로 검색 지연이 발생하고, 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발
-  - *Solution:* 복수 API 최적화 병렬 호출 구조로 전환하여 검색 응답 시간을 크게 단축하고, 유연한 DB 확장 스키마 설계 및 TypeScript 유니온 타입을 활용한 안전한 분기 렌더링 구현
+  - *Challenge:* 각 외부 API의 응답 속도 편차로 검색 지연이 발생하고 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발
+  - *Solution:* 비동기 병렬 처리 구조 최적화로 응답 시간을 단축하고 데이터 포맷 파싱 및 매핑 레이어를 단일화하여 렌더링 안정성 확보
 
 **👨‍💻 Role:** 3인 팀 프로젝트 (백엔드 아키텍처 100% 구축 & 프론트엔드 연동)
 
-**📅 Duration:** 진행 중 (2025.11 - Present)
+**📅 Duration:** 2025.10 - Present (진행 중)
 
 <br/>
 
@@ -158,38 +163,38 @@
 </td>
 <td width="50%" valign="top">
 
-### 🐱 JavaNyang
+### 🐱 JavaNyang (자바냥)
 
 **실시간 자바 퀴즈 대전 플랫폼**
 
 <br/>
 
-실시간 대결과 랭킹 시스템을 통해 학습 동기를 부여하는 인터랙티브 학습 플랫폼입니다.
+실시간 대결과 랭킹 시스템을 통해 학습 동기를 부여하는 인터랙티브 학습 플랫폼입니다. 더조은컴퓨터아카데미 팀 프로젝트로 개발되었습니다.
 
 <br/>
 
 **🛠 Tech Stack**
 
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
 **✨ Key Features & Contributions**
 
-- 🎮 **실시간 퀴즈 대전 시스템:** WebSocket 기반의 실시간 1:1 매칭 및 실시간 채팅 룸 구축 전담
-- 📊 **데이터 모델링 & 운영 인프라:** 난이도별 경험치, 업적, 실시간 랭킹 시스템을 위한 효율적인 DB 설계 및 데이터 관리용 어드민 대시보드 개발
+- 🎮 **실시간 퀴즈 대전 시스템:** WebSocket 기반의 실시간 1:1 매칭 및 대전 중 실시간 채팅 룸 인프라 구축 전담
+- 📊 **랭킹 및 보상 시스템 데이터 모델링:** 난이도별 경험치 자동 부여, 업적 스코어링 시스템을 위한 PostgreSQL DB 설계 및 데이터 제어용 어드민 대시보드 구현
 
 **💥 Troubleshooting & Impact**
 
 - **동시성 트래픽 집중 시 실시간 상태 동기화 지연**
-  - *Challenge:* 다수 사용자가 동시에 퀴즈 대전에 진입할 때 세션 검증 오버헤드와 소켓 커넥션 지연 발생
-  - *Solution:* 실시간 데이터 상태 업데이트 주기 최적화 및 유기적인 세션 관리 로직 고도화로 인게임 튕김 현상을 없애고 대전 데이터 정밀 동기화 달성
+  - *Challenge:* 복수의 사용자가 동시에 퀴즈 세션에 진입 시 소켓 커넥션 오버헤드와 데이터 불일치 가능성 발생
+  - *Solution:* Supabase 실시간 구독 상태 업데이트 주기를 최적화하고 세션 동기화 로직을 고도화하여 인게임 정밀 동기화 달성
 
-**👨‍💻 Role:** Team Leader, Frontend & DB (기획 및 전체 아키텍처 리드)
+**👨‍💻 Role:** Team Leader, Frontend & DB (기획 및 서비스 아키텍처 리드)
 
-**📅 Duration:** 2개월 (2025.05 - 2025.07)
+**📅 Duration:** 2025.01 - 2025.09 (아카데미 연계 수행)
 
 <br/>
 
@@ -205,38 +210,40 @@
 <tr>
 <td width="50%" valign="top">
 
-### 📚 Studyo
+### 📚 StudyO (스터디오)
 
 **스터디 그룹 모집 플랫폼**
 
 <br/>
 
-모집부터 활동까지 원스톱으로 지원하는 통합 협업 플랫폼입니다.
+모집부터 활동까지 원스톱으로 지원하는 통합 협업 플랫폼입니다. 더조은컴퓨터아카데미 팀 프로젝트로 개발되었습니다.
 
 <br/>
 
 **🛠 Tech Stack**
 
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Spring Boot](https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/-Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![Oracle](https://img.shields.io/badge/-Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
-![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 
 **✨ Key Features & Contributions**
 
-- 👤 **직관적인 UX/UI 구현:** 공통 모달 및 재사용 가능한 상태 기반 컴포넌트 설계로 프론트엔드 생산성 향상, 캘린더 연동 및 실시간 알림 피드 시스템 구현
-- 🔗 **RESTful API 설계 및 Cloud 배포:** Oracle DB를 기반으로 스터디 매칭 도메인 API를 설계하고, AWS EC2 인프라 인스턴스를 통해 유저에게 안정적인 서비스 배포
+- 👤 **상태 기반 UI/UX 가속화:** Next.js와 Vite 환경에 최적화된 공통 모달 및 캘린더 연동, 실시간 알림 피드 등 재사용성 높은 프론트엔드 가발 담당
+- 🔗 **RESTful API 연동 및 클라우드 인프라:** OracleDB 설계 가이드를 기반으로 스터디 매칭 도메인 백엔드 API를 연동하고, AWS EC2 인스턴스를 통해 안정적인 배포 수행
 
 **💥 Troubleshooting & Impact**
 
-- **RESTful API 응답 지연 및 비효율적 컴포넌트 렌더링**
-  - *Challenge:* 스터디 스케줄 데이터 조회 시 연관 테이블 조인 오버헤드로 인한 프론트엔드 UI 버벅임 현상 발생
-  - *Solution:* API 쿼리 튜닝 및 필요한 데이터만 명확하게 반환하도록 DTO 구조를 단순화하고, React 컴포넌트 내 불필요한 재렌더링 트리거를 제거하여 전체 렌더링 속도 최적화
+- **대용량 스케줄 데이터 로딩 시의 렌더링 지연 및 복잡도**
+  - *Challenge:* 캘린더 내 다수의 스터디 일정 조회 시 조인 연산 오버헤드로 인해 프론트엔드 UI 프레임 드랍 발생
+  - *Solution:* 필요한 필수 필드만 정제하여 반환하도록 데이터 객체(DTO) 구조를 직렬화하고, React 컴포넌트 내 불필요한 재렌더링 트래픽을 제어하여 로딩 속도 대폭 최적화
 
-**👨‍💻 Role:** Frontend & Backend Developer (풀스택 기능 개발 및 인프라 구축)
+**👨‍💻 Role:** Frontend & Backend Developer (풀스택 기능 구현 및 AWS 인프라 구축)
 
-**📅 Duration:** 1개월 (2025.07 - 2025.08)
+**📅 Duration:** 2025.01 - 2025.09 (아카데미 연계 수행)
 
 <br/>
 
@@ -247,7 +254,7 @@
 <img src="https://img.shields.io/badge/Backend_Repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 <a href="https://www.figma.com/deck/wcNAN0dl7TiPoTO4TzYsaJ/StudyO-PPT?node-id=1-140&t=luXpFAMdXpBx1cVP-1">
-<img src="https://img.shields.io/badge/Presentation-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
+<img src="https://img.shields.io/badge/Presentation-F24E1E?style=for-the-badge&logo=figma&omega;Color=white"/>
 </a>
 
 </td>
@@ -260,6 +267,39 @@
 <br/>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 🎧 Now Playing on Apple Music
+
+> 음악 리뷰 플랫폼 **ORU**를 직접 기획하고 개발할 만큼 음악에 진심입니다. 주로 R&B, Alternative Pop, Hip-Hop의 짙은 그루브를 연료 삼아 코딩에 몰입합니다. 코딩할 때 귀에서 절대 안 빠지는 최애 플레이리스트입니다.
+
+<div align="center">
+  <a href="https://music.apple.com" target="_blank">
+    <img src="https://music-status-badge.vercel.app/api/now-playing?user=bitedogo&theme=dark&platform=apple" alt="Apple Music Now Playing" /&gt;
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="https://upload.wikimedia.org/wikipedia/en/b/be/Frank_Ocean_-_Blonde.png" width="120px" style="border-radius: 10px;"/><br/>
+<b>Blonde</b><br/>Frank Ocean
+</td>
+<td align="center" width="33%">
+<img src="https://upload.wikimedia.org/wikipedia/en/5/51/Daniel_Caesar_-_Freudian.png" width="120px" style="border-radius: 10px;"/><br/>
+<b>Freudian</b><br/>Daniel Caesar
+</td>
+<td align="center" width="33%">
+<img src="https://upload.wikimedia.org/wikipedia/en/3/39/The_Weeknd_-_After_Hours.png" width="120px" style="border-radius: 10px;"/><br/>
+<b>After Hours</b><br/>The Weeknd
+</td>
+</tr>
+</table>
+</div>
 
 <br/>
 
