@@ -52,7 +52,7 @@
 
 ### ⚛️ Frontend Development
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&white)
 ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
@@ -165,8 +165,12 @@
 - **소셜 로그인 및 인프라:** NextAuth.js 연동 환경 설계 및 Vercel(icn1 리전)을 통한 지속적 배포 및 운영
 
 #### 💥 트러블 슈팅 (Troubleshooting)
+- **게시글 조회수 어뷰징 방지 및 자가 조작 차단 (2단 방어 구조)**
+  - *Challenge:* 페이지 진입 시 단순하게 조회수를 증가시키면 무분별한 새로고침(F5) 연타나 작성자 본인의 셀프 클릭으로 데이터가 오염되고 DB 자원이 낭비되는 취약점 발견.
+  - *Solution:* - **1단계 (클라이언트 방어):** 브라우저 세션에 게시글별 방문 플래그(`post-{id}-view-incremented`)를 기록하여 중복 호출을 API단에서 차단. fetch 요청 직전에 플래그를 선제적으로 설정(Set)하여 응답 전 초고속 연타 시 발생하는 레이스 컨디션(Race Condition)을 원천 방지.
+    - **2단계 (서버 최종 검증):** 클라이언트 변조 우회를 차단하기 위해 API 라우트에서 세션 유저 ID와 DB 게시글 작성자 ID를 교차 비교하여 일치할 경우 카운트 증가를 무효화하는 최종 방어선 구축.
 - **이종 API 결합 시의 데이터 병목 및 포맷 충돌**
-  - *Challenge:* 각 외부 API의 응답 속도 편차로 검색 지연이 발생하고 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발
+  - *Challenge:* 각 외부 API의 응답 속도 편차로 검색 지연이 발생하고 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발.
   - *Solution:* 비동기 병렬 처리 구조 최적화(`Promise.all`)로 레이턴시를 제어하고 포맷 파싱/매핑 레이어를 단일화하여 안정적인 유니온 타입 분기 렌더링 달성.
 
 #### 🔗 관련 링크
@@ -198,7 +202,7 @@
 
 #### 💥 트러블 슈팅 (Troubleshooting)
 - **동시성 트래픽 집중 시 실시간 상태 동기화 지연**
-  - *Challenge:* 복수의 사용자가 동시에 퀴즈 세션에 진입 시 소켓 커넥션 오버헤드와 데이터 불일치 가능성 발생
+  - *Challenge:* 복수의 사용자가 동시에 퀴즈 세션에 진입 시 소켓 커넥션 오버헤드와 데이터 불일치 가능성 발생.
   - *Solution:* Supabase 실시간 상태 구독 범위 및 업데이트 빈도를 도메인 단위로 스로틀링(Throttling)하여 동기화 정밀도 극대화.
 
 #### 🔗 관련 링크
@@ -231,8 +235,8 @@
 
 #### 💥 트러블 슈팅 (Troubleshooting)
 - **대용량 스케줄 데이터 로딩 시의 렌더링 지연 및 복잡도**
-  - *Challenge:* 캘린더 내 다수의 스터디 일정 조회 시 조인 연산 오버헤드로 인해 프론트엔드 UI 스크롤 프레임 드랍 현상
-  - *Solution:* 계층 간 데이터 이동 시 필수 필드만 직렬화하도록 DTO 구조를 리팩토링하고, React 렌더링 트리거 바인딩을 제거하여 렌더링 속도 개선.
+  - *Challenge:* 캘린더 내 다수의 스터디 일정 조회 시 조인 연산 오버헤드로 인해 프론트엔드 UI 스크롤 프레임 드랍 현상.
+  - *Solution:* 계층 간 데이터 이동 시 필수 필드만 직렬화하도록 DTO 구조를 리팩토링하고, React 렌더링 트리거 바인딩을 제거하여 로딩 속도 개선.
 
 #### 🔗 관련 링크
 - **GitHub Frontend:** [github.com/hyunsupLee/react-study-o](https://github.com/hyunsupLee/react-study-o)
