@@ -232,50 +232,13 @@
 #### 💥 트러블 슈팅 (Troubleshooting)
 - **대용량 스케줄 데이터 로딩 시의 렌더링 지연 및 복잡도**
   - *Challenge:* 캘린더 내 다수의 스터디 일정 조회 시 조인 연산 오버헤드로 인해 프론트엔드 UI 스크롤 프레임 드랍 현상
-  - *Solution:* 계층 간 데이터 이동 시 필수 필드만 직렬화하도록 DTO 구조를 리팩토링하고, React 렌더링 트리거 바인딩을 제거하여 로딩 속도 개선.
+  - *Solution:* 계층 간 데이터 이동 시 필수 필드만 직렬화하도록 DTO 구조를 리팩토링하고, React 렌더링 트리거 바인딩을 제거하여 렌더링 속도 개선.
 
 #### 🔗 관련 링크
 - **GitHub Frontend:** [github.com/hyunsupLee/react-study-o](https://github.com/hyunsupLee/react-study-o)
 - **GitHub Backend:** [github.com/hyunsupLee/tjspring](https://github.com/hyunsupLee/tjspring)
 - **Presentation (PPT):** [StudyO 발표자료](https://www.figma.com/deck/wcNAN0dl7TiPoTO4TzYsaJ/StudyO-PPT?node-id=1-140&t=luXpFAMdXpBx1cVP-1)
 - **시연 영상:** [YouTube 링크](https://youtu.be/YQAbBxCMgDo)
-
-<br/>
-
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-<br/>
-
-## 🎧 Now Playing on Apple Music
-
-> 음악 리뷰 플랫폼 **ORU**를 직접 기획하고 개발할 만큼 음악에 진심입니다. 주로 R&B, Alternative Pop, Hip-Hop의 짙은 그루브를 연료 삼아 코딩에 몰입합니다. 코딩할 때 귀에서 절대 안 빠지는 최애 플레이리스트입니다.
-
-<div align="center">
-  <a href="https://music.apple.com" target="_blank">
-    <img src="https://music-status-badge.vercel.app/api/now-playing?user=bitedogo&theme=dark&platform=apple" alt="Apple Music Now Playing" />
-  </a>
-</div>
-
-<br/>
-
-<div align="center">
-<table>
-<tr>
-<td align="center" width="33%">
-<img src="https://upload.wikimedia.org/wikipedia/en/b/be/Frank_Ocean_-_Blonde.png" width="120px" style="border-radius: 10px;"/><br/>
-<b>Blonde</b><br/>Frank Ocean
-</td>
-<td align="center" width="33%">
-<img src="https://upload.wikimedia.org/wikipedia/en/5/51/Daniel_Caesar_-_Freudian.png" width="120px" style="border-radius: 10px;"/><br/>
-<b>Freudian</b><br/>Daniel Caesar
-</td>
-<td align="center" width="33%">
-<img src="https://upload.wikimedia.org/wikipedia/en/3/39/The_Weeknd_-_After_Hours.png" width="120px" style="border-radius: 10px;"/><br/>
-<b>After Hours</b><br/>The Weeknd
-</td>
-</tr>
-</table>
-</div>
 
 <br/>
 
