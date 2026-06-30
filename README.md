@@ -52,7 +52,7 @@
 
 ### ⚛️ Frontend Development
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
@@ -80,9 +80,9 @@
 
 <br/>
 
-<div align="center">
-
 ## 📊 GitHub Analytics
+
+<div align="center">
 
 <img height="180em" src="https://github-readme-stats.vercel.app/api?username=bitedogo&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117"/>
 <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bitedogo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117"/>
@@ -160,18 +160,17 @@
 - **어드민 어플리케이션:** 리뷰 승인 워크플로, 오늘의 앨범/슬라이드바/공지사항 편집 시스템 구현
 
 #### 👨‍💻 나의 담당 업무
-- **풀스택 핵심 개발:** Next.js·Supabase 기반의 음악 탐색 백엔드 파이프라인 및 리뷰 CRUD 전담 구현
-- **데이터 집계 및 연동:** 유저 평점 실시간 집계 아키텍처 연산 처리, 타인 피드 프로필 탐색 로직 구축
-- **소셜 로그인 및 인프라:** NextAuth.js 연동 환경 설계 및 Vercel(icn1 리전)을 통한 지속적 배포 및 운영
+- **풀스택 핵심 개발:** Next.js·Supabase 기반의 음악 탐색 백엔드 기능 및 리뷰 CRUD 전담 구현
+- **데이터 집계 및 연동:** 유저 평점 실시간 집계 연산 처리, 타인 피드 프로필 탐색 로직 구축
+- **소셜 로그인 및 인프라:** NextAuth.js 연동 환경 설계 및 Vercel(icn1 리전)을 통한 배포 및 운영
 
 #### 💥 트러블 슈팅 (Troubleshooting)
-- **게시글 조회수 어뷰징 방지 및 자가 조작 차단 (2단 방어 구조)**
-  - *Challenge:* 페이지 진입 시 단순하게 조회수를 증가시키면 무분별한 새로고침(F5) 연타나 작성자 본인의 셀프 클릭으로 데이터가 오염되고 DB 자원이 낭비되는 취약점 발견.
-  - *Solution:* - **1단계 (클라이언트 방어):** 브라우저 세션에 게시글별 방문 플래그(`post-{id}-view-incremented`)를 기록하여 중복 호출을 API단에서 차단. fetch 요청 직전에 플래그를 선제적으로 설정(Set)하여 응답 전 초고속 연타 시 발생하는 레이스 컨디션(Race Condition)을 원천 방지.
-    - **2단계 (서버 최종 검증):** 클라이언트 변조 우회를 차단하기 위해 API 라우트에서 세션 유저 ID와 DB 게시글 작성자 ID를 교차 비교하여 일치할 경우 카운트 증가를 무효화하는 최종 방어선 구축.
-- **이종 API 결합 시의 데이터 병목 및 포맷 충돌**
-  - *Challenge:* 각 외부 API의 응답 속도 편차로 검색 지연이 발생하고 상이한 포맷으로 인해 프론트엔드 타입 에러 빈발.
-  - *Solution:* 비동기 병렬 처리 구조 최적화(`Promise.all`)로 레이턴시를 제어하고 포맷 파싱/매핑 레이어를 단일화하여 안정적인 유니온 타입 분기 렌더링 달성.
+- **게시글 조회수 새로고침 연타 및 본인 글 조회수 조작 문제**
+  - *문제상황:* 사용자가 새로고침(F5)을 무한 연타하거나, 본인이 작성한 글을 계속 클릭하여 조회수를 비정상적으로 조작할 수 있는 취약점이 있었습니다. 이로 인해 데이터 신뢰도가 떨어지고 서버 자원이 낭비되었습니다.
+  - *해결방안:* 브라우저 세션(sessionStorage)에 게시글 방문 기록을 먼저 남겨 새로고침 연타 시 서버 요청 자체를 가지 못하게 막았습니다. 또한, 서버 API에서 현재 로그인한 유저 ID와 글쓴이 ID를 비교하여 본인의 글일 경우 조회수 카운트가 올라가지 않도록 검증 시스템을 구축해 어뷰징을 완전히 차단했습니다.
+- **다양한 외부 음원 데이터 결합 시 발생한 검색 느림 현상**
+  - *문제상황:* 여러 개의 외부 음원 API를 동시에 불러오는 과정에서 응답 속도가 느려져 검색창이 멈추거나 화면이 깨지는 현상이 있었습니다.
+  - *해결방안:* 두 API를 따로 처리하지 않고 동시에 한 번에 호출하는 병렬 처리 방식으로 전환하여 검색 시간을 대폭 줄였으며, 데이터 포맷을 하나로 가공하는 결합 레이어를 두어 화면이 끊김 없이 안정적으로 그려지도록 구현했습니다.
 
 #### 🔗 관련 링크
 - **공식 웹 사이트:** [www.comeonoru.com](https://www.comeonoru.com)
@@ -192,18 +191,18 @@
 #### ✨ 주요 기능
 - **단계별 퀴즈 시스템:** 주제별(변수, 제어문 등) 및 난이도별(초급/중급/고급) 체계적인 자바 프로그래밍 학습 환경 구축
 - **1:1 실시간 대전:** 정적인 문서 풀이 방식을 탈피하여 사용자 간 실시간 퀴즈 배틀 및 양방향 라이브 채팅 소통 기능 구현
-- **게임화(Gamification) 요소:** 학습 성과를 가시화해 줄 업적 획득, 랭킹 시스템 및 개인 정답률 통계 시각화 피드백 제공
+- **게임화 요소:** 학습 성과를 가시화해 줄 업적 획득, 랭킹 시스템 및 개인 정답률 통계 시각화 피드백 제공
 - **사용자 커스텀 퀴즈:** 학습자가 직접 문제를 직접 출제하고 공유할 수 있는 커뮤니티 기반 콘텐츠 공간 지원
 
 #### 👨‍💻 나의 담당 업무
-- **DB 최적화 및 어드민:** PostgreSQL 관계 모델 정규화 수행 및 관리자용 회원 조회·통합 검색 시스템 구축
-- **게임화 엔진 개발:** 문제 난이도 기반의 자동 경험치 부여 모델 및 업적 달성 연동 백엔드 스코어링 시스템 구현
-- **실시간 소통 인프라:** 유저 세션 가입 처리와 유기적으로 바인딩되는 실시간 대전용 소켓 채팅 핸들러 개발
+- **DB 최적화 및 어드민:** PostgreSQL 관계 데이터 모델을 다듬고 관리자용 회원 통합 조회·검색 시스템 구축
+- **게임화 시스템 개발:** 문제 난이도에 맞춰 유저 경험치가 오르고 업적이 달성되는 시스템 설계
+- **실시간 소통 인프라:** 실시간 퀴즈 대전 및 1:1 매칭 시 사용자들이 끊김 없이 소통할 수 있는 실시간 채팅 기능 개발
 
 #### 💥 트러블 슈팅 (Troubleshooting)
-- **동시성 트래픽 집중 시 실시간 상태 동기화 지연**
-  - *Challenge:* 복수의 사용자가 동시에 퀴즈 세션에 진입 시 소켓 커넥션 오버헤드와 데이터 불일치 가능성 발생.
-  - *Solution:* Supabase 실시간 상태 구독 범위 및 업데이트 빈도를 도메인 단위로 스로틀링(Throttling)하여 동기화 정밀도 극대화.
+- **여러 사용자가 동시에 대전 진입 시 화면 싱크가 밀리는 현상**
+  - *문제상황:* 많은 유저가 실시간 퀴즈 대전에 동시에 참여할 때, 정답 데이터 전송 속도가 밀려 사용자 간의 화면 싱크가 맞지 않는 문제가 발생했습니다.
+  - *해결방안:* 데이터베이스의 실시간 알림 구독 범위를 꼭 필요한 정보 단위로만 쪼개고, 데이터 전송 횟수를 적절히 제한하여 유저들이 실시간으로 완전히 동일한 속도로 문제를 풀 수 있도록 동기화했습니다.
 
 #### 🔗 관련 링크
 - **서비스 링크:** [hyunsuplee.github.io/JavaNyang/](https://hyunsuplee.github.io/JavaNyang/)
@@ -229,22 +228,17 @@
 - **협업 인프라 & 홍보:** AWS S3 기반의 업로드 진행률이 표시되는 파일 공유 스토리지, 에디터 활용 모집 홍보판 운영
 
 #### 👨‍💻 나의 담당 업무
-- **마이페이지 대시보드 개발:** 유저별 활성 스터디 트래킹 및 주간 타임라인 스케줄러를 시각화하는 복합 대시보드 대문 화면 전담 구현
-- **프로필 세션 제어:** 닉네임 유효성 검증 및 멀티파트 프로필 이미지 실시간 비동기 업데이트 모듈 구축
-- **공용 컴포넌트 표준화:** 표준 UI 디자인 시스템에 맞춘 고재사용성 모달(Modal) 컴포넌트 가이드라인 설계로 중복 코드 감소
+- **마이페이지 대시보드 개발:** 유저별 참여 중인 스터디 및 주간 일정을 보기 편하게 시각화해 주는 통합 대시보드 화면 구현
+- **프로필 정보 수정 기능:** 유효성 검사를 거쳐 닉네임과 프로필 이미지를 실시간으로 바꾸는 비동기 처리 구현
+- **공용 컴포넌트 표준화:** 코드 중복을 줄이기 위해 프로젝트 전역에서 재사용할 수 있는 표준 모달 컴포넌트 구조화
 
 #### 💥 트러블 슈팅 (Troubleshooting)
-- **대용량 스케줄 데이터 로딩 시의 렌더링 지연 및 복잡도**
-  - *Challenge:* 캘린더 내 다수의 스터디 일정 조회 시 조인 연산 오버헤드로 인해 프론트엔드 UI 스크롤 프레임 드랍 현상.
-  - *Solution:* 계층 간 데이터 이동 시 필수 필드만 직렬화하도록 DTO 구조를 리팩토링하고, React 렌더링 트리거 바인딩을 제거하여 로딩 속도 개선.
+- **많은 양의 일정을 한 번에 불러올 때 화면이 버벅이는 현상**
+  - *문제상황:* 스터디 일정 캘린더에서 데이터베이스에 쌓인 수많은 스케줄 데이터를 한꺼번에 조회할 때, 화면이 뚝뚝 끊기거나 로딩 시간이 지나치게 길어지는 버벅임이 있었습니다.
+  - *해결방안:* 화면 그리기에 불필요한 무거운 데이터들을 전부 제외하고, 딱 필요한 핵심 정보만 골라내어 프론트엔드로 전달하도록 서버 코드를 고쳤습니다. 또한, 화면이 불필요하게 다시 그려지는 주기를 제어하여 가볍고 부드러운 스크롤 성능을 확보했습니다.
 
 #### 🔗 관련 링크
 - **GitHub Frontend:** [github.com/hyunsupLee/react-study-o](https://github.com/hyunsupLee/react-study-o)
 - **GitHub Backend:** [github.com/hyunsupLee/tjspring](https://github.com/hyunsupLee/tjspring)
-- **Presentation (PPT):** [StudyO 발표자료](https://www.figma.com/deck/wcNAN0dl7TiPoTO4TzYsaJ/StudyO-PPT?node-id=1-140&t=luXpFAMdXpBx1cVP-1)
-- **시연 영상:** [YouTube 링크](https://youtu.be/YQAbBxCMgDo)
-
-<br/>
-
----
-© 2026 bitedogo. All rights reserved.
+- **Presentation
+- 
