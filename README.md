@@ -4,7 +4,6 @@
 > **아이디어를 코드를 통해 현실로 만들어내는 과정에 몰입합니다.**
 > 확장성 있는 웹 애플리케이션과 안정적인 데이터 아키텍처를 설계하는 풀스택 개발자입니다.
 
-[GitHub](https://github.com/bitedogo) · [Email](mailto:your.email@example.com) · [Instagram](https://instagram.com/your_id)
 
 ---
 
