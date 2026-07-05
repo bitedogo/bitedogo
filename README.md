@@ -1,111 +1,50 @@
-# 👋 Hi, I'm bitedogo
-### Full Stack Developer Based in Seoul
+<div align="center">
 
-> **아이디어를 코드를 통해 현실로 만들어내는 과정에 몰입합니다.**
-> 확장성 있는 웹 애플리케이션과 안정적인 데이터 아키텍처를 설계하는 풀스택 개발자입니다.
+# 🪐 bitedogo
+### Full Stack Developer & Software Engineer
 
-[GitHub](https://github.com/bitedogo) · [Email](mailto:your.email@example.com)
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
+</p>
+
+> **"아이디어를 정교한 코드를 통해 현실로 만들어내는 과정에 몰입합니다."**
+> 복잡한 비즈니스 로직을 확장성 있는 아키텍처와 안정적인 데이터 파이프라인으로 풀어내는 것을 즐깁니다.
+
+[🌐 GitHub](https://github.com/bitedogo) · [✉️ Email](mailto:your.email@example.com)
+
+</div>
 
 ---
 
 ## 🚀 About Me
 
-* **📍 Location:** 대한민국 서울
-* **💻 Languages:** JavaScript, TypeScript, Java, Dart
-* **🎯 Focus:** RESTful/Hybrid API 설계, 데이터베이스 최적화, 실시간 동기화 서비스 구현
+* **📍 Location:** 대한민국 서울 (Seoul, South Korea)
+* **🎯 Focus:** RESTful/Hybrid API 설계, 분산 캐싱 및 데이터베이스 최적화, 대규모 트래픽 방어 및 실시간 서비스 구현
+* **✨ Value:** 단순 기능 구현을 넘어 제품의 성능 지표와 데이터 신뢰성 확보를 개발의 핵심 가치로 삼습니다.
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Languages & Frontend
-`TypeScript` `JavaScript` `Java` `Dart` · `Next.js` `React` `Vue.js` `Tailwind CSS`
-
-### Backend & Database
-`Spring Boot` `Node.js` · `Supabase` `PostgreSQL` `Oracle` `AWS S3`
-
-### Tools
-`Git` `GitHub` `Vercel` `Figma` `IntelliJ` `VS Code`
+| 분류 | 기술 스택 |
+| :--- | :--- |
+| **Languages & Frontend** | `TypeScript` `JavaScript` `Java` `Dart` · `Next.js` `React` `Vue.js` `Tailwind CSS` |
+| **Backend & Database** | `Spring Boot` `Node.js` · `Supabase` `PostgreSQL` `Oracle` `AWS S3` |
+| **Tools & Platforms** | `Git` `GitHub` `Vercel` `Figma` `IntelliJ` `VS Code` |
 
 ---
 
 ## 🎯 Featured Projects
 
 ### 💿 ORU (오루) — 음악 리뷰 및 소통 플랫폼
-> **개발 기간:** 2025.10 ~ 현재 (진행 중)  
-> **프로젝트 요약:** 앨범 단위 평점 기록 및 음악 리스너 간의 취향 교감을 제공하는 풀스택 웹 서비스  
-> **참여도 & 인원:** 3명 (본인 기여도: 개발 50%, DB 설계 30%)  
-> **Tech Stack:** `Next.js (App Router)`, `TypeScript`, `Supabase`, `PostgreSQL`, `Vercel`
+> **음악을 기록하고, 그 속에 담긴 당신의 가치를 나누는 공간**
 
-#### 👨‍💻 담당 업무 및 핵심 성과
-* **풀스택 아키텍처 구축:** Next.js와 Supabase 기반의 음악 데이터 탐색 인프라 및 리뷰 CRUD API 전담 개발
-* **데이터 파이프라인 최적화:** 유저 평점 및 피드 데이터를 실시간으로 집계하고 연동하는 결합 로직 구현
-* **인증 및 배포:** NextAuth.js 기반 보안 환경 설계 및 Vercel 인프라 최적화로 지연 시간 최소화
-
-#### 📊 문제 해결 및 가치 입증 (Problem-Solving)
-* **이슈 1: 악의적인 매크로 및 새로고침을 통한 특정 게시글 조회수 어뷰징 취약점**
-  * **문제 정의:** 동일 유저가 단시간 내에 무분별하게 새로고침(F5)을 연타하거나 매크로를 이용해 조회수를 조작할 수 있는 구조적 결함 확인. 이로 인해 인기 게시글 순위의 공정성이 훼손되고 데이터베이스 쓰기(Write) 부하가 급증함.
-  * **가설 수립:** 클라이언트 정보(고유 고정 IP)와 회원 식별자(User ID), 그리고 조회한 게시글 ID를 조합한 고유 키(Unique Key)를 생성하고, 이를 24시간 만료 주기를 가진 분산 캐시(Redis) 또는 쿠키 기반 인증 레이어에서 검증하면 중복 조회수 증가를 완벽히 차단하고 DB 트랜잭션 비용도 줄일 수 있을 것이다.
-  * **액션 및 검증:**
-    * 서버 사이드 미들웨어에서 요청의 `X-Forwarded-For` 기반 IP 주소와 로그인 유저 세션 토큰을 추출하여 유저 식별 알고리즘 구현.
-    * `[IP/User_ID + Post_ID]` 형태의 검증 키를 매핑하고, 24시간의 TTL 제약 조건을 적용하여 당일 최초 조회 시에만 데이터베이스의 `views` 카운트를 Up 하는 로직 반영.
-    * 추가적으로 글 작성자 본인의 세션 ID가 해당 게시글의 `author_id`와 일치할 경우 카운트 연산 자체를 스킵하도록 비즈니스 로직 방어벽 구축.
-  * **결과 및 레슨:** 동일 타겟에 대한 인위적인 조회수 조작율 0% 달성 및 부적절한 쓰기 쿼리 발생량의 획기적 감소. 고유 식별값 기반의 처리 기법을 통해 서비스의 정량적 데이터 신뢰성과 인프라 효율성을 동시에 확보하는 법을 배움.
-
-* **이슈 2: 멀티 플랫폼 외부 음원 API 순차 조회로 인한 검색 결과 스트리밍 링크 노출 지연**
-  * **문제 정의:** 앨범 검색 후 Apple Music, Spotify, Deezer 등의 외부 스트리밍 플랫폼 링크를 순차적으로 조회(Waterfall 병목)하면서 카드 렌더링이 늦어지고 사용자 경험(UX)이 심각하게 저하되는 현상 발생.
-  * **가설 수립:** iTunes 메타데이터를 선행 확보한 후, 타 플랫폼 API 호출을 비동기 병렬 처리로 전환하고 응답 데이터를 공통 스키마로 정규화(Data Normalization) 및 캐싱하면 링크 노출 지연을 최소화할 수 있을 것이다.
-  * **액션 및 검증:**
-    * `Promise.all`을 도입하여 이종 플랫폼 API 요청을 병렬로 동시에 처리하도록 백엔드 로직 수정.
-    * 플랫폼별로 상이한 응답 형식을 프론트엔드가 일관되게 처리할 수 있도록 `AlbumStreamingLinks` 표준 스키마 통합 레이어 구축.
-    * 배치(Batch) API 활용 및 Next.js의 `unstable_cache`를 통한 캐싱 레이어를 레이어링하여 중복 쿼리에 대한 데이터베이스 및 외부 네트워크 비용 절감.
-  * **결과 및 레슨:** 검색 결과 화면에서 각 플랫폼별 스트리밍 연동 버튼의 노출 속도를 획기적으로 개선하여 끊김 없는 탐색UX 완성. **[성공 기준: 다형성 데이터 구조 일관화 및 외부 API 병목 해결]** 분산된 외부 데이터 소스를 정규화하고 효율적으로 캐싱하는 데이터 파이프라인 최적화 역량을 강화함.
-
-* **Links:** [Official Website](https://www.comeonoru.com) · [GitHub Repository](https://github.com/bitedogo/ourmusicreview)
-
----
-
-### 🐱 자바냥 (JavaNyang) — 온라인 자바 퀴즈 플랫폼
-> **개발 기간:** 2025.05 ~ 2025.07  
-> **프로젝트 요약:** 기초 문법부터 고급 개념까지 한 손으로 즐기는 웹/모바일 반응형 자바 프로필 학습 플랫폼  
-> **참여도 & 인원:** 6명 (Team Leader / 본인 기여도: DB 설계 40%, 개발 20%)  
-> **Tech Stack:** `React`, `Next.js`, `Supabase`, `PostgreSQL`, `Vite`
-
-#### 👨‍💻 담당 업무 및 핵심 성과
-* **팀 리딩 & 데이터 모델링:** 프로젝트 총괄 팀장으로서 애자일 일정 조율 및 PostgreSQL 관계형 데이터 구조 설계 주도
-* **게이미케이션 엔진 설계:** 지속적인 학습 동기를 위한 난이도별 경험치 산정 및 실시간 업적 달성 시스템 구축
-* **실시간 인프라:** Supabase Realtime 채널을 활용한 1:1 대전 매칭 및 양방향 라이브 채팅 개발
-
-#### 📊 문제 해결 및 가치 입증 (Problem-Solving)
-* **이슈 1: 동시 다발적 대전 진입 시 클라이언트 간 화면 동기화 지연**
-  * **문제 정의:** 대량의 유저가 실시간 대전에 진입할 때 정답 데이터 전송 병목이 일어나 타이머와 문제 출제 화면의 싱크가 어긋나는 치명적 결함 발생.
-  * **가설 수립:** 전송 페이로드를 핵심 데이터 단위로 경량화하고 구독 범위를 세분화하면 네트워크 오버헤드가 해소될 것이다.
-  * **액션 및 검증:** 전역 상태 구독을 최소한의 메타데이터 단위로 쪼개고, 브로드캐스팅 주기 최적화를 통해 클라이언트 패킷 크기 경량화.
-  * **결과 및 레슨:** 동시 접속 시 동기화 오차 범위를 실시간 수준으로 압축하는 데 성공. 실시간 아키텍처에서 데이터 경량화가 성능에 미치는 직결적인 영향력을 학습함.
-
-* **Links:** [Service Link](https://hyunsuplee.github.io/JavaNyang/) · [GitHub Repository](https://github.com/hyunsupLee/JavaNyang)
-
----
-
-### 📚 StudyO (스터디오) — 올인원 스터디 협업 플랫폼
-> **개발 기간:** 2025.07 ~ 2025.08 (5주)  
-> **프로젝트 요약:** 스터디 모집, 팀 빌딩, 체계적인 일정 관리 및 파일 공유를 지원하는 통합 관리 솔루션  
-> **참여도 & 인원:** 6명 (본인 기여도: DB 설계 30%, 개발 20%)  
-> **Tech Stack:** `Java`, `Spring Boot`, `MyBatis`, `OracleDB`, `React`, `AWS S3`
-
-#### 👨‍💻 담당 업무 및 핵심 성과
-* **통합 대시보드 개발:** 유저별 참여 스터디 현황 및 주간 스케줄을 통합하여 시각화하는 비동기 데이터 대시보드 화면 구현
-* **유효성 검사 및 비동기 처리:** 프로필 정보와 이미지 업로드를 실시간으로 안전하게 처리하는 사용자 검증 모듈 구축
-* **공용 컴포넌트 표준화:** 프론트엔드 코드 중복을 줄이고 생산성을 높이기 위해 전역 표준 모달(Modal) 아키텍처 설계
-
-#### 📊 문제 해결 및 가치 입증 (Problem-Solving)
-* **이슈 1: 캘린더 내 대량의 일정 데이터 로딩 시 렌더링 병목 현상**
-  * **문제 정의:** 누적 일정이 많아짐에 따라 fullCalendar 컴포넌트가 무거운 전체 데이터를 한 번에 파싱하면서 로딩이 지연되고 인터랙션 시 프레임이 끊기는 현상 발생.
-  * **가설 수립:** 쿼리 단에서 불필요한 데이터 필드를 필터링하고, 프론트엔드의 불필요한 리렌더링 주기를 제어하면 60fps에 준하는 성능을 확보할 수 있을 것이다.
-  * **액션 및 검증:** MyBatis 매퍼에서 필요한 데이터(일정명, 기간, ID)만 추출하도록 쿼리를 튜닝하고, 프론트엔드 단에서 `useMemo` 및 디바운싱을 적용해 상태 업데이트 빈도 제어.
-  * **결과 및 레슨:** 스케줄 조작 시 발생하는 프레임 드랍을 제거하고 로딩 속도를 최적화함. 최적의 데이터 스펙 정의가 성능에 미치는 가치를 체득함.
-
-* **Links:** [GitHub Frontend](https://github.com/hyunsupLee/react-study-o) · [GitHub Backend](https://github.com/hyunsupLee/tjspring)
-
----
-© 2026 bitedogo. All rights reserved.
+```yaml
+- Period: 2025.10 ~ Present (진행 중)
+- Type: 풀스택 음악 커뮤니티 웹 서비스
+- Team: 3명 (본인 기여도: 개발 50%, DB 설계 30%)
+- Stack: Next.js (App Router), TypeScript, Supabase, PostgreSQL, Vercel
