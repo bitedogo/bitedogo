@@ -39,6 +39,7 @@
 * **기술:** `Next.js`, `TypeScript`, `Supabase`, `PostgreSQL`, `Vercel`
 * **링크:** [Official Website](https://www.comeonoru.com) · [GitHub Repository](https://github.com/bitedogo/ourmusicreview)
 
+
 **💡 기획 의도**
 해외의 'RateYourMusic'이나 'Pitchfork'처럼 리스너들이 참여하는 음악 아카이브 및 리뷰 플랫폼이 국내에는 대중화되지 않았고, 기존 국내 전문 평론 매체들의 활성도가 낮다는 점에 주목했습니다. 이에 국내 대중음악 리스너들이 자유롭게 앨범 평점을 남기고 깊이 있는 감상을 공유할 수 있는 <mark><b>'사용자 참여형 음악 평론 커뮤니티 서비스'</b></mark>를 목적으로 기획 및 개발했습니다.
 
