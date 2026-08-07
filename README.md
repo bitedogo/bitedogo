@@ -36,7 +36,7 @@
 
 * **기간:** 2025.10 ~ 현재 (진행 중)
 * **기여:** 3인 팀 (본인 기여도: 기획 및 아이디어 발제 100%, 개발 50%, DB 설계 30%)
-* **기술:** `Next.js` &nbsp;&nbsp; `TypeScript` &nbsp;&nbsp; `Supabase` &nbsp;&nbsp; `PostgreSQL` &nbsp;&nbsp; `Vercel`
+* **기술:** `Next.js` &nbsp;&nbsp; `TypeScript` &nbsp;&nbsp; `Supabase` &nbsp;&nbsp; `PostgreSQL` &nbsp;&nbsp; `Vercel` &nbsp;&nbsp; `Cursor AI`
 * **링크:** [Official Website](https://www.comeonoru.com) &nbsp;·&nbsp; [GitHub Repository](https://github.com/bitedogo/ourmusicreview)
 
 <br>
@@ -50,19 +50,20 @@
 **🏗️ 기술 및 아키텍처 도입 배경**
 * **Next.js (App Router):** 리뷰 게시글의 <mark><b>검색 엔진 최적화(SEO)</b></mark>를 확보하고, 다수의 외부 음원 API를 <mark><b>서버사이드에서 병렬로 호출</b></mark>하여 클라이언트 렌더링 부하를 줄이기 위해 도입했습니다.
 * **Supabase & PostgreSQL:** 실시간으로 유저의 평점과 피드가 업데이트되는 커뮤니티 특성상, <mark><b>Realtime Subscription</b></mark> 기능과 강력한 관계형 데이터베이스를 함께 활용하여 백엔드 개발 생산성을 극대화했습니다.
+* **Cursor AI:** AI 기반 파이어폭스/코드 생성 도구를 도입하여, 외부 API 데이터 파싱 및 반복적인 CRUD 보일러플레이트 코드를 신속하게 작성함으로써 <mark><b>전체 개발 생산성 및 프로토타이핑 속도를 대폭 향상</b></mark>시켰습니다.
 
 <br>
 
 **👨‍💻 역할 및 기여도 (My Role & Contributions)**
 * **기획 및 전체 아이디어 리드 (100%):** 서비스 도메인 정의, 타겟 유저 분석, 유저 저니(Journey) 설계 및 핵심 기능 정의서 등 **기획의 A부터 Z까지 독자적으로 설계 및 주도**
-* **핵심 API 및 DB 아키텍처 설계:** Next.js와 Supabase를 기반으로 음악 데이터 탐색 인프라를 구축하고, 리뷰 생성/조회/수정/삭제(CRUD) 전반에 걸친 API 아키텍처를 전담 설계했습니다.
+* **핵심 API 및 DB 아키텍처 설계:** Next.js와 Supabase를 기반으로 음악 데이터 탐색 인프라를 구축하고, **Cursor AI를 활용해** 리뷰 생성/조회/수정/삭제(CRUD) 전반에 걸친 API 아키텍처를 전담 설계 및 효율적으로 구축했습니다.
 * **실시간 데이터 파이프라인 구현:** 유저들이 매긴 평점과 피드 반응을 지연 없이 동기화하기 위해, Supabase 이벤트를 감지해 통계 테이블을 갱신하는 실시간 파이프라인 로직을 구현했습니다.
-
 
 <br>
 
 **📈 결과 및 성과**
 * **아이디어 기반 서비스 완전 상용화:** 아이디어 빌딩부터 도메인 확보, 실제 배포 및 운영 단계까지 원스톱으로 리드
+* **AI 도구(Cursor AI) 활용을 통한 개발 공수 단축:** 반복적인 코드 작성 단계를 자동화하여 핵심 비즈니스 로직 및 DB 설계에 역량을 집중
 * **음악 탐색 인터페이스 노출 속도 개선:** 외부 음원 API 조회 및 데이터 포맷 가공 시 병렬 처리 도입을 통해 응답 지연 최소화
 * **어뷰징 조회수 조작 0% 달성:** 고유 키 캐싱 검증 도입으로 부정 행위 원천 차단 및 불필요한 트래픽 낭비 최소화
 * **검색 엔진(SEO) 노출 최적화:** Next.js Server Components 기반으로 동적 메타데이터를 서빙하여 검색 엔진 접근성 확보
