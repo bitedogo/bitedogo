@@ -19,7 +19,7 @@
 ## 🛠️ Technology Stack
 
 ### Languages & Frontend
-<img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat-square&logo=java&logoColor=white" alt="Java"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/dart-%230175C2.svg?style=flat-square&logo=dart&logoColor=white" alt="Dart"/> &nbsp;&nbsp;·&nbsp;&nbsp; <img src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB" alt="React"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/vue.js-%234FC08D.svg?style=flat-square&logo=vuedotjs&logoColor=white" alt="Vue.js"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+<img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat-square&logo=java&logoColor=white" alt="Java"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/dart-%230175C2.svg?style=flat-square&logo=dart&logoColor=white" alt="Dart"/> &nbsp;&nbsp;·&nbsp;&nbsp; <img src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB" alt="React"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/vue.js-%234FC08D.svg?style=flat-square&logo=vue.js&logoColor=white" alt="Vue.js"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
 
 ### Backend & Database
 <img src="https://img.shields.io/badge/spring_boot-%236DB33F.svg?style=flat-square&logo=spring-boot&logoColor=white" alt="Spring Boot"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/node.js-6DA55F?style=flat-square&logo=node.js&logoColor=white" alt="Node.js"/> &nbsp;&nbsp;·&nbsp;&nbsp; <img src="https://img.shields.io/badge/supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/postgresql-%23316192.svg?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle"/>&nbsp;&nbsp; <img src="https://img.shields.io/badge/AWS_S3-569A31?style=flat-square&logo=amazons3&logoColor=white" alt="AWS S3"/>
@@ -41,45 +41,30 @@
 
 <br>
 
-**💡 기획 배경 및 목표**
-* **진행 배경 (100% 독자 기획):** 'RateYourMusic'이나 'Pitchfork' 등 해외에는 활성화된 아카이브 중심의 음악 평론 커뮤니티가 존재하나, 국내에는 대중음악 리스너들이 자유롭게 앨범 단위로 심도 깊은 리뷰를 나눌 수 있는 대중적인 플랫폼이 부족하다는 점에 직접 주목했습니다. 평소 국내 대중음악 씬의 전문 평론 매체들의 활성도가 점차 낮아지는 현상에 아쉬움을 느껴, 리스너 중심의 새로운 놀이터가 필요하다고 생각했습니다.
-* **프로젝트 목표:** 국내 대중음악 리스너들의 실제 목소리와 니즈를 반영하여, 직관적이고 빠른 탐색 환경을 보장하고 유저들이 자유롭게 평점을 남기며 소통할 수 있는 '사용자 참여형 국내 No.1 음악 아카이브&리뷰 서비스' 를 직접 제안하고 설계를 리드했습니다.
+**1️⃣ 문제 정의 (Problem Statement)**
+* **시장 부재:** 해외(RateYourMusic 등) 대비 국내에는 대중음악 리스너들이 앨범 단위로 심도 있게 리뷰를 나누고 아카이빙할 커뮤니티가 부재함.
+* **기술적 병목 및 중복 카운트:** 다중 외부 음원 API 순차 호출로 인한 페이지 렌더링 지연, 그리고 무분별한 새로고침으로 조회수가 중복 집계되며 DB UPDATE가 불필요하게 늘어나는 이슈가 발생함.
 
-<br>
+**2️⃣ 가설 수립 및 성공 기준 (Hypothesis & Success Criteria)**
+* **가설 1:** 외부 음원 API를 서버사이드 병렬 호출(`Promise.all`) 및 캐싱하면 탐색·링크 노출 속도가 개선될 것이다.
+* **가설 2:** 세션 키 기반 중복 카운트 방지와 작성자 본인 제외 로직을 적용하면, 새로고침성 중복 조회와 불필요한 UPDATE를 줄일 수 있을 것이다.
+* **성공/실패 판단 기준:**
+  * 성공: 외부 음원 링크 로딩 체감 개선(병렬·캐싱) & 동일 세션 내 중복 조회·불필요 UPDATE 감소.
+  * 실패: 외부 API 응답 실패율 증가, 또는 잘못된 플랫폼 링크 매칭 증가 시 Failure로 판단.
 
-**🏗️ 기술 및 아키텍처 도입 배경**
-* **Next.js (App Router):** 리뷰·커뮤니티 페이지의 <mark><b>SEO(메타데이터·sitemap)</b></mark>와 서버 사이드 데이터 로딩을 위해 도입했습니다. 외부 음원 API는 서버에서 병렬 호출해 클라이언트 부하를 줄였습니다.
-* **Supabase (PostgreSQL) + TypeORM:** 관계형 스키마·엔티티 기반 CRUD를 구축했습니다. 프로필/커버 등은 <mark><b>Supabase Storage</b></mark>로 관리해 백엔드 구축 속도를 높였습니다.
-* **Cursor AI:** 외부 API 파싱·반복 CRUD 보일러플레이트를 빠르게 작성해, <mark><b>도메인 로직·DB 설계에 시간을 집중</b></mark>했습니다.
+**3️⃣ 액션 및 검증 (Action & Validation)**
+* **기획 & 아키텍처:** 100% 독자 기획. Next.js App Router 기반 SEO 기초(Sitemap·OG·서버 렌더링) 세팅 및 Supabase(PostgreSQL) + TypeORM 기반 CRUD/집계 API 구축.
+* **AI 생산성 도입:** Cursor AI로 반복 CRUD 보일러플레이트 작성 시간을 단축하고, 도메인 로직·DB 설계에 집중.
+* **성능 및 조회수 최적화:** iTunes/Odesli/Spotify/Deezer API 병렬 조회·정규화·캐싱 파이프라인 구축, 세션 키 기반 조회수 중복 방지 및 작성자 본인 제외 로직 구현.
 
-<br>
+**4️⃣ 결과 및 임팩트 (Result & Impact)**
+* **실 상용화 달성:** 아이디어 빌딩부터 도메인 확보, Vercel 배포·운영까지 원스톱으로 완성.
+* **중복 조회 억제 및 DB 부하 완화:** 동일 세션 중복 카운트와 작성자 자가 조회를 막아 불필요한 UPDATE를 줄임.
+* **음악 탐색 인터페이스 응답 개선:** 외부 API 병렬화·캐싱으로 네트워크 latency를 줄이고 스트리밍 링크 노출을 안정화.
 
-**👨‍💻 역할 및 기여도 (My Role & Contributions)**
-* **기획 리드 (100%):** 서비스 도메인·타겟 유저·유저 저니(Journey) 및 핵심 기능 정의서 작성 전담
-* **API·DB 아키텍처:** Next.js + Postgres(TypeORM) 기반으로 리뷰/커뮤니티/플레이리스트 CRUD 및 집계 API 전담 설계·구현
-* **음악 탐색 인프라:** iTunes / Odesli / Spotify / Deezer 등을 `Promise.all`로 병렬 조회·정규화·캐싱하여 스트리밍 링크 노출 지연 최소화
-
-<br>
-
-**📈 결과 및 성과**
-* **원스톱 서비스 출시 리드:** 아이디어 발상부터 도메인 확보, 실제 배포 및 운영까지 원스톱으로 리드
-* **AI 도구 활용 효율화:** Cursor AI를 통해 보일러플레이트 작성 단축, 핵심 로직 및 스키마에 집중
-* **탐색 UI 응답속도 개선:** 외부 API 병렬 호출 및 캐싱으로 스트리밍 링크 노출 성능 개선
-* **효율적인 조회수 로직 구현:** 세션 단위 중복 카운트 방지 및 작성자 본인 제외 처리로 불필요한 DB 쓰기 감소
-* **검색 노출 기반 확보:** sitemap 및 OG(Open Graph) 등 SEO 기초 세팅 완료
-
-<br>
-
-<details>
-<summary><b>🔥 트러블 슈팅 (클릭하여 펼치기)</b></summary>
-<br>
-
-| 이슈 | 문제 상황 | 해결 방안 | 결과 |
-| :--- | :--- | :--- | :--- |
-| **조회수 중복** | 새로고침마다 카운트가 무분별하게 증가 | 세션 키로 1회만 증가하도록 제한하고 작성자 본인 조회는 제외 | 중복 조회 차단 및 불필요한 UPDATE 쿼리 감소 |
-| **API 병목** | 외부 음원 API 순차 호출로 인한 렌더링 지연 | `Promise.all` 기반 병렬 호출 + 데이터 정규화 및 캐싱 적용 | 링크 노출 속도 대폭 향상 및 API 호출 비용 절감 |
-
-</details>
+**5️⃣ 러닝 포인트 (Learning Points)**
+* **SEO & SSR의 실질적 가치:** Client Component 위주에서 벗어나 Server Component와 Sitemap·OG 등 SEO 기초 세팅이 검색 노출 기반과 초기 로딩 경험에 미치는 영향을 체감.
+* **AI 도구 활용 트레이드오프:** Cursor AI로 속도를 내는 동시에, 생성된 코드의 타입 안정성·아키텍처 적합성을 검증하는 안목의 중요성을 학습.
 
 ---
 
@@ -88,46 +73,35 @@
 
 * **기간:** 2025.05 ~ 2025.07
 * **기여:** 6인 팀 (Team Leader / 본인 기여도: DB 설계 40%, 개발 20%)
-* **기술:** `React` &nbsp;&nbsp; `Next.js` &nbsp;&nbsp; `Supabase` &nbsp;&nbsp; `PostgreSQL` &nbsp;&nbsp; `Vite`
+* **기술:** `React` &nbsp;&nbsp; `Next.js` &nbsp;&nbsp; `Supabase Realtime` &nbsp;&nbsp; `PostgreSQL` &nbsp;&nbsp; `Vite`
 * **링크:** [Service Link](https://hyunsuplee.github.io/JavaNyang/) &nbsp;·&nbsp; [GitHub Repository](https://github.com/hyunsupLee/JavaNyang)
 
 <br>
 
-**💡 기획 배경 및 목표**
-* **진행 배경:** 전통적인 프로그래밍 기초 학습 방식(책, 단방향 인강 등)은 비전공자나 초급 개발자들이 중도 포기하기 쉬운 지루한 과정을 가집니다.
-* **프로젝트 목표:** 자바(Java) 언어 학습에 흥미를 잃지 않도록 퀴즈 형태의 **'게이미피케이션(Gamification)'** 요소를 결합하고, 실시간 경쟁/성장 자극 요소를 더해 학습 지속성을 높이는 앱 스타일의 반응형 웹 플랫폼을 목표로 기획했습니다.
+**1️⃣ 문제 정의 (Problem Statement)**
+* **학습 이탈율:** 단방향·혼자 풀이 중심의 프로그래밍 학습은 초급자의 지속 학습 동기가 약하고 이탈로 이어지기 쉬움.
+* **실시간 대전 UX:** 1:1 퀴즈 대전에서 방 상태·참가자·라운드 답안이 어긋나면 공정한 대결 경험이 깨짐.
 
-<br>
+**2️⃣ 가설 수립 및 성공 기준 (Hypothesis & Success Criteria)**
+* **가설 1:** 퀴즈 기반 게이미피케이션(EXP·레벨·업적·랭킹)과 1:1 라이브 대전을 도입하면 학습 지속 동기가 강화될 것이다.
+* **가설 2:** Supabase Realtime으로 방·참가자·라운드 답안을 구독해 동기화하면, 방 로비 기반 1:1 대전도 안정적인 라이브 UX를 유지할 수 있을 것이다.
+* **성공/실패 판단 기준:**
+  * 성공: 방 생성·입장·준비·5라운드 진행까지 상태 동기화가 끊기지 않고, 기획한 핵심 기능(퀴즈·대전·업적·채팅)이 일정 내 릴리즈됨.
+  * 실패: 대전 중 방/참가자/답안 동기화 실패로 라운드 진행이 불가하거나, 핵심 기능이 미완성인 채 마감되는 경우.
 
-**🏗️ 기술 및 아키텍처 도입 배경**
-* **React:** 퀴즈 진행 및 대전 중 페이지 새로고침이 발생하지 않도록 <mark><b>SPA(Single Page Application)</b></mark> 형태로 구성하여 앱과 같은 부드러운 사용자 경험(UX)을 제공하고자 했습니다.
-* **Supabase Realtime:** 별도의 복잡한 WebSocket 서버를 구축하고 유지보수하는 대신, BaaS의 실시간 채널 기능을 활용하여 <mark><b>저지연(Low-latency) 1:1 매칭</b></mark>과 양방향 라이브 채팅을 신속하고 안정적으로 구현했습니다.
+**3️⃣ 액션 및 검증 (Action & Validation)**
+* **팀 리딩 & PM:** 프로젝트 총괄로서 요구사항 정리·스프린트 관리, Supabase(PostgreSQL) 테이블·관계 설계 주도.
+* **게이미피케이션 설계:** 퀴즈 정답 시 reward 기반 EXP·레벨 산정, 출석·정답 수·레벨 조건의 업적(`achievements` / `user_achievements`) 트리거 및 랭킹 연동.
+* **실시간 파이프라인 구현:** Supabase Realtime(`postgres_changes`)으로 배틀 방·참가자·라운드 답안 동기화, 방 목록 로비 기반 1:1 매칭, 전역 실시간 채팅 구현.
 
-<br>
+**4️⃣ 결과 및 임팩트 (Result & Impact)**
+* **1:1 라이브 대전 UX 확보:** Realtime 구독으로 방 상태·준비·라운드·점수를 동기화해 공정한 퀴즈 대전 경험 제공.
+* **게이미피케이션으로 학습 루프 완성:** EXP·레벨·업적·랭킹으로 단기 성취와 재도전 동기를 연결.
+* **일정 내 안정 릴리즈:** 2025.05~07 기획·개발·발표 일정에 맞춰 GitHub Pages로 서비스 배포.
 
-**👨‍💻 역할 및 기여도 (My Role & Contributions)**
-* **팀 리딩 및 PM:** 6인 규모 팀의 총괄 팀장으로서 애자일 방식의 스프린트 일정을 리드하고 기술 스택 조율, 요구사항 분석 및 데이터베이스(PostgreSQL) 스키마 전반 설계를 총괄했습니다.
-* **실시간 통신 엔진 개발:** Supabase Realtime 채널을 활용해 1:1 대전 매칭 대기열(Queue) 관리와 게임 룸 생성, 양방향 라이브 인게임 채팅을 개발했습니다.
-* **💡 주도한 핵심 아이디어 (게이미피케이션 엔진 설계):** 단순 퀴즈 풀이를 넘어 유저가 잔존할 수 있도록 **난이도별 가중치가 적용된 경험치 산정 공식 및 실시간 뱃지/업적 시스템 설계**를 주도하여 재미와 보상이라는 심리적 요소를 기술적으로 정교하게 구현했습니다.
-
-<br>
-
-**📈 결과 및 성과**
-* **동시 접속 환경에서의 실시간 동기화 오차율 대폭 완화:** 브로드캐스팅 주기와 메타데이터 구조 경량화를 통해 네트워크 페이로드 감소
-* **퀴즈 이탈율 제어:** 즉각적인 리액션 피드백과 실시간 랭킹 변동을 통해 재미 중심의 사용자 흐름(Flow) 유지
-* **6인 프로젝트의 안정적인 릴리즈 이행:** 일정 관리 가시화 및 명세서 일치 작업을 통해 일정 딜레이 없이 마일스톤 달성
-
-<br>
-
-<details>
-<summary><b>🔥 트러블 슈팅 (클릭하여 펼치기)</b></summary>
-<br>
-
-| 이슈 | 문제 상황 | 해결 방안 | 결과 |
-| :--- | :--- | :--- | :--- |
-| **화면 동기화 지연** | 다수 유저 실시간 대전 진입 시 전송 병목 및 싱크 어긋남 | 상태 구독 메타데이터 세분화 및 브로드캐스팅 주기 최적화 | 동시 접속 시 동기화 오차를 실시간 수준으로 압축 |
-
-</details>
+**5️⃣ 러닝 포인트 (Learning Points)**
+* **실시간 이벤트 기반 아키텍처:** 테이블 변경을 무분별하게 구독하면 상태가 복잡·불안정해지므로, 방·참가자·답안 등 필요한 단위로 Pub/Sub을 나누는 설계가 중요함을 체득.
+* **팀 리더십 및 커뮤니케이션:** 기획–개발 간 요구사항 간극을 조기에 맞추고 스프린트를 조율하는 PM 역할의 중요성을 정립.
 
 ---
 
@@ -141,41 +115,30 @@
 
 <br>
 
-**💡 기획 배경 및 목표**
-* **진행 배경:** 기존 스터디 모임은 소통(카카오톡/슬랙), 일정 공유(구글 캘린더), 학습 아카이빙(노션) 등으로 서비스가 파편화되어 있어 정보 유실 및 관리 복잡도가 매우 높았습니다.
-* **프로젝트 목표:** 모집부터 스케줄링, 자료 보관, 과제 제출까지 스터디 생애 주기 전반을 한 곳에서 원스톱으로 관리하는 **'올인원 협업 워크스페이스'** 구현을 목표로 설정했습니다.
+**1️⃣ 문제 정의 (Problem Statement)**
+* **모달 UI 중복:** 확인/알림 모달이 화면마다 비슷한 구조로 반복되어, 문구·버튼·성공/실패 UI를 매번 따로 맞추는 비용이 큼.
+* **일정 조회 복잡도:** 마이페이지에서 참여 스터디가 늘수록 그룹별 캘린더 API를 여러 번 호출·병합해야 해, 로딩·표시 로직이 무거워짐.
 
-<br>
+**2️⃣ 가설 수립 및 성공 기준 (Hypothesis & Success Criteria)**
+* **가설 1:** Confirm형 모달을 type 프리셋(수락/추방/탈퇴/프로필 수정 등)으로 공통화하면, 동일 UI를 화면마다 새로 짜는 비용을 줄일 수 있다.
+* **가설 2:** 스터디별 일정 조회를 병렬 처리하고, FullCalendar 연동 시 이벤트 매핑을 단순화하면 누적 일정 화면의 체감 지연을 줄일 수 있다.
+* **성공/실패 판단 기준:**
+  * 성공: Confirm/알림 흐름을 공통 컴포넌트·헬퍼로 재사용해, 신규 화면에서도 동일 패턴으로 모달을 붙일 수 있을 것. 마이페이지·스터디 캘린더에서 일정이 누락·꼬임 없이 표시되고, 호스트 권한에 따른 등록/수정이 안정적으로 동작할 것.
+  * 실패: 스터디 병렬 조회 시 데이터 파싱 싱크가 깨지거나 권한별 CRUD 제어 실패 시 판단.
 
-**🏗️ 기술 및 아키텍처 도입 배경**
-* **Spring Boot & OracleDB:** 다수의 유저 및 스터디 그룹 간의 <mark><b>복잡한 권한 처리(접근 제어)</b></mark>와 일정, 파일 등의 관계형 데이터를 안정적이고 무결성 있게 다루기 위해 엔터프라이즈급 생태계인 Spring Boot 환경을 채택했습니다.
-* **AWS S3:** 스터디원들이 공유하는 대용량 학습 자료 및 이미지 파일들을 웹 서버(WAS) 부하 없이 <mark><b>안전하게 분산 저장</b></mark>하고 로드하기 위해 클라우드 스토리지를 연동했습니다.
+**3️⃣ 액션 및 검증 (Action & Validation)**
+* **공통 Confirm 모달:** `ConfirmModal`을 Portal 기반으로 두고, 작업 유형별 프리셋·성공 모드를 정의해 마이페이지·멤버 관리 등에서 재사용.
+* **캘린더 연동 정리:** `FullCalendar`로 스터디 일정 CRUD를 구현하고, 마이페이지에서는 참여 스터디 일정을 병렬 조회 후 날짜별 표시. 호스트 여부는 `useMemo`로 판별해 등록 권한을 분리.
+* **파일 업로드 검증:** 프로필/썸네일·첨부 업로드 시 용량·이미지 타입을 프론트에서 선검증하고, `FormData`로 API에 전달. 저장된 이미지는 AWS S3 경로로 서빙.
 
-<br>
+**4️⃣ 결과 및 임팩트 (Result & Impact)**
+* **모달 작성 공수 감소:** 확인/성공 UI를 프리셋으로 통일해, 화면마다 모달 마크업·문구를 중복 작성하는 범위를 줄임.
+* **일정 UX 안정화:** 스터디·마이페이지 캘린더에서 일정 조회·등록·수정 흐름을 일관되게 유지하고, 다중 스터디 일정도 한 화면에서 확인 가능.
+* **업로드 안정성 향상:** 잘못된 파일 형식·과도한 용량을 업로드 전에 걸러, 서버 전송 실패·불필요 요청을 줄임.
 
-**👨‍💻 역할 및 기여도 (My Role & Contributions)**
-* **통합 대시보드 및 시각화 개발:** Spring Boot 백엔드 API를 설계하고 React와 비동기 연동하여, 유저가 참여 중인 다중 스터디의 주간 일정과 상태 정보를 한눈에 볼 수 있는 '통합 데이터 대시보드' 인터페이스를 전담 구현했습니다.
-* **사용자 보안 모듈 구축:** 안전한 파일 송수신을 위해 AWS S3 업로드 시 pre-signed URL 패턴을 활용하고, 확장자 및 화이트리스트 기반의 검증 인터셉터를 구축했습니다.
-* **💡 주도한 핵심 아이디어 (전역 공통 모달 아키텍처):** 다수의 상세 기능이 팝업 및 레이어 모달(Modal) 형태로 빈번하게 활용되는 UX 특성상 코드 중복도가 높음을 포착했습니다. 이에 **리액트 전역 상태 관리와 연동한 '표준화된 전역 공통 모달(Modal) 아키텍처'**를 제안 및 설계하여 팀원들의 프론트엔드 UI 생산성을 비약적으로 높였습니다.
-
-<br>
-
-**📈 결과 및 성과**
-* **프론트엔드 모달 관련 코드 중복률 70% 감소:** 전역 모달 아키텍처 패턴을 표준화하여 신규 모달 작성 시간 단축 및 유지보수 편의성 극대화
-* **대용량 일정 조회 최적화:** 캘린더 파싱 단계에서의 데이터 튜닝을 통해 누적 일정 데이터 로딩 시의 **프레임 드랍(Frame drop) 현상을 완전 제거하여 매끄러운 60fps 인터랙션 확보**
-* **스토리지 보안 강화 및 WAS 리소스 세이브:** AWS S3 Direct Upload 패턴 적용을 통한 미디어 자원 처리 시간 절약
-
-<br>
-
-<details>
-<summary><b>🔥 트러블 슈팅 (클릭하여 펼치기)</b></summary>
-<br>
-
-| 이슈 | 문제 상황 | 해결 방안 | 결과 |
-| :--- | :--- | :--- | :--- |
-| **렌더링 병목 현상** | 누적 일정 증가로 인한 캘린더 파싱 부하 및 프레임 드랍 | 쿼리 튜닝(필요 데이터만 추출) 및 디바운싱/useMemo 적용 | 프레임 드랍 제거 및 60fps에 준하는 렌더링 성능 확보 |
-
-</details>
+**5️⃣ 러닝 포인트 (Learning Points)**
+* **재사용 가능한 UI 계약 (UI Contract):** 동작만 맞추는 UI가 아니라, type/프리셋처럼 팀원이 바로 가져다 쓸 수 있는 공통 컴포넌트 경계를 정하는 것이 유지보수에 더 중요하다는 점.
+* **데이터 흐름 중심 성능 감각:** 렌더 최적화 이전에 “API를 몇 번 치는지·파싱을 어디서 하는지”를 먼저 정리하는 것이 체감 성능에 직결된다는 점.
 
 ---
 © 2026 bitedogo. All rights reserved.
