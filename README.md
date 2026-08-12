@@ -15,11 +15,11 @@
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api?username=bitedogo&show_icons=true&theme=radical&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=bitedogo&layout=compact&theme=radical&hide=c,html,css"/>
+  <img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=bitedogo&theme=radical" />
+  <img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/top-languages?username=bitedogo&theme=radical" />
 </p>
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=bitedogo&theme=radical"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=bitedogo&theme=radical"/>
 </p>
 
 ---
