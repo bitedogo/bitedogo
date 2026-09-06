@@ -62,19 +62,19 @@
 <br>
 
 * **서버리스 환경 DB 연결 안정화 및 트랜잭션 트러블슈팅**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 서버리스 인스턴스 기동 시 일시적 커넥션 고갈로 **리뷰 등록 간헐적 500 에러** 발생[cite: 1]
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> **인스턴스당 연결 풀 제한**, **DB 재연결 래퍼 로직** 및 **TypeORM 원자적 트랜잭션** 적용[cite: 1]
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 간헐적 쓰기 실패율 0% 달성 및 **데이터 정합성 보장**[cite: 1]
+  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 서버리스 인스턴스 기동 시 일시적 커넥션 고갈로 **리뷰 등록 간헐적 500 에러** 발생
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> **인스턴스당 연결 풀 제한**, **DB 재연결 래퍼 로직** 및 **TypeORM 원자적 트랜잭션** 적용
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 간헐적 쓰기 실패율 0% 달성 및 **데이터 정합성 보장**
 
 * **데이터베이스 모델링 및 조회 성능 최적화**
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 유저/앨범/리뷰 핵심 도메인 **외래키(FK) 정규화** 및 댓글·좋아요 대상 **다형 외래키 구조** 설계[cite: 1]
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 빈번한 목록 조회를 위해 앨범 ID, 유저 ID, 알림 생성일자 등에 **수동 복합 인덱스(B-Tree)** 구축[cite: 1]
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 다중 조인 및 집계(`COUNT`, `GROUP BY`) 쿼리 튜닝으로 **목록 서빙 지연 최소화**[cite: 1]
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 유저/앨범/리뷰 핵심 도메인 **외래키(FK) 정규화** 및 댓글·좋아요 대상 **다형 외래키 구조** 설계
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 빈번한 목록 조회를 위해 앨범 ID, 유저 ID, 알림 생성일자 등에 **수동 복합 인덱스(B-Tree)** 구축
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 다중 조인 및 집계(`COUNT`, `GROUP BY`) 쿼리 튜닝으로 **목록 서빙 지연 최소화**
 
 * **외부 API 병렬화 및 보안 인증 파이프라인 구축**
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 다중 음원 플랫폼(Spotify, iTunes 등) 순차 조회 병목을 `Promise.all` **병렬 처리 및 캐싱**으로 해결[cite: 1]
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **Resend API**를 도입해 TTL 기반 임시 인증 토큰 생성 및 **비밀번호 재설정 파이프라인** 구현[cite: 1]
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> **Next.js App Router** 기반 SSR 및 Dynamic OG/Sitemap 구축으로 **SEO 인프라 확립**[cite: 1]
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 다중 음원 플랫폼(Spotify, iTunes 등) 순차 조회 병목을 `Promise.all` **병렬 처리 및 캐싱**으로 해결
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **Resend API**를 도입해 TTL 기반 임시 인증 토큰 생성 및 **비밀번호 재설정 파이프라인** 구현
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> **Next.js App Router** 기반 SSR 및 Dynamic OG/Sitemap 구축으로 **SEO 인프라 확립**
 
 ---
 
@@ -114,13 +114,13 @@
 <br>
 
 * **이벤트 기반 비동기 상태 동기화 및 메모리 누수 방지**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 마이페이지 프로필 수정 시 **헤더 및 타 컴포넌트 간 로컬 State 불일치** 발생[cite: 1]
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> 무거운 전역 상태 도구 대신 브라우저 표준 **`CustomEvent` 발행-구독** 구조 도입 및 **`removeEventListener` 클린업** 구현[cite: 1]
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 새로고침 없는 **즉시 UI 동기화 완성** 및 언마운트 시점 리스너 해제로 **메모리 누수 원천 차단**[cite: 1]
+  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 마이페이지 프로필 수정 시 **헤더 및 타 컴포넌트 간 로컬 State 불일치** 발생
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> 무거운 전역 상태 도구 대신 브라우저 표준 **`CustomEvent` 발행-구독** 구조 도입 및 **`removeEventListener` 클린업** 구현
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 새로고침 없는 **즉시 UI 동기화 완성** 및 언마운트 시점 리스너 해제로 **메모리 누수 원천 차단**
 
 * **다중 스터디 일정 조회 최적화 및 권한 제어**
   * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 다중 스터디 참여 시 FullCalendar 일정 데이터 요청 누적으로 인한 **렌더링 지연**
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> `Promise.all` 기반 **캘린더 API 병렬 호출**[cite: 1] 및 `useMemo` 기반 **호스트 권한 분리** 적용
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> `Promise.all` 기반 **캘린더 API 병렬 호출** 및 `useMemo` 기반 **호스트 권한 분리** 적용
   * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 다중 일정의 부드러운 병합 렌더링 달성 및 **비인가 사용자의 일정 조작 방어**
 
 * **선검증 기반 미디어 업로드 및 인프라 연동**
