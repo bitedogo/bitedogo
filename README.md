@@ -56,24 +56,25 @@
 
 * **Period:** 2025.10 ~ 현재 <img src="https://img.shields.io/badge/Production-brightgreen?style=flat-square"/>
 * **Team:** 3인 팀 (`기획 100%`, `풀스택 개발 50%`, `DB 설계 30%`)
-* **Tech Stack:** `Next.js (App Router)` `TypeScript` `Supabase` `PostgreSQL` `TypeORM` `Vercel`
+* **Tech Stack:** `Next.js (App Router)` `TypeScript` `Supabase (PostgreSQL)` `TypeORM` `Vercel`
 * **Links:** [🌐 공식 웹사이트](https://www.comeonoru.com) &nbsp;·&nbsp; [📦 GitHub Repo](https://github.com/bitedogo/ourmusicreview)
 
 <br>
 
-* **외부 음원 API 병렬 처리 및 캐싱 최적화**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 다중 플랫폼(Spotify, iTunes, Deezer) 직렬 호출로 인한 **응답 지연 병목 발생**
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> `Promise.all` 기반 **서버사이드 병렬 호출** 및 **정규화 캐싱 파이프라인** 구축
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 네트워크 Latency를 낮추고 **음원 스트리밍 링크 렌더링 체감 속도 대폭 개선**
+* **서버리스 환경 DB 연결 안정화 및 트랜잭션 트러블슈팅**
+  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 서버리스 인스턴스 기동 시 일시적 커넥션 고갈로 **리뷰 등록 간헐적 500 에러** 발생[cite: 1]
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> **인스턴스당 연결 풀 제한**, **DB 재연결 래퍼 로직** 및 **TypeORM 원자적 트랜잭션** 적용[cite: 1]
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 간헐적 쓰기 실패율 0% 달성 및 **데이터 정합성 보장**[cite: 1]
 
-* **세션 기반 중복 카운트 차단 및 DB 쓰기 부하 완화**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 새로고침 및 본인 글 열람 시 **불필요한 `UPDATE` 쿼리 빈번 발생**
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> **세션 키 검증 인터셉트** 및 **작성자 본인 조회 필터링** 로직 적용
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 무분별한 어뷰징 트래픽 억제 및 **불필요한 DB 트랜잭션 절감**
+* **데이터베이스 모델링 및 조회 성능 최적화**
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 유저/앨범/리뷰 핵심 도메인 **외래키(FK) 정규화** 및 댓글·좋아요 대상 **다형 외래키 구조** 설계[cite: 1]
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 빈번한 목록 조회를 위해 앨범 ID, 유저 ID, 알림 생성일자 등에 **수동 복합 인덱스(B-Tree)** 구축[cite: 1]
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 다중 조인 및 집계(`COUNT`, `GROUP BY`) 쿼리 튜닝으로 **목록 서빙 지연 최소화**[cite: 1]
 
-* **풀스택 아키텍처 구축 및 프로덕션 무중단 운영**
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **Next.js App Router** 기반 **Server Component 분리**, **Dynamic OG / Sitemap 파이프라인** 세팅으로 검색 엔진 최적화(SEO) 환경 마련
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **Supabase(PostgreSQL)** 모델링 및 **TypeORM** 기반 CRUD API 구축부터 **Vercel 실서버 배포·커스텀 도메인 운영**까지 전 과정 완수
+* **외부 API 병렬화 및 보안 인증 파이프라인 구축**
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 다중 음원 플랫폼(Spotify, iTunes 등) 순차 조회 병목을 `Promise.all` **병렬 처리 및 캐싱**으로 해결[cite: 1]
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **Resend API**를 도입해 TTL 기반 임시 인증 토큰 생성 및 **비밀번호 재설정 파이프라인** 구현[cite: 1]
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> **Next.js App Router** 기반 SSR 및 Dynamic OG/Sitemap 구축으로 **SEO 인프라 확립**[cite: 1]
 
 ---
 
@@ -112,19 +113,19 @@
 
 <br>
 
-* **React Portal 기반 공통 모달 프리셋 시스템 구축**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 화면마다 모달 코드가 산발적으로 중복 작성되며 **유지보수 비용 및 UI 불일치 증가**
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> Confirm/Alert/Action 타입별 프리셋을 정의한 **전역 Portal 공통 모달 컴포넌트** 설계
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 마이페이지·멤버 관리 등 전역의 **모달 작업 공수 단축** 및 **사용자 인터랙션 일관성 확보**
+* **이벤트 기반 비동기 상태 동기화 및 메모리 누수 방지**
+  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 마이페이지 프로필 수정 시 **헤더 및 타 컴포넌트 간 로컬 State 불일치** 발생[cite: 1]
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> 무거운 전역 상태 도구 대신 브라우저 표준 **`CustomEvent` 발행-구독** 구조 도입 및 **`removeEventListener` 클린업** 구현[cite: 1]
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 새로고침 없는 **즉시 UI 동기화 완성** 및 언마운트 시점 리스너 해제로 **메모리 누수 원천 차단**[cite: 1]
 
-* **다중 스터디 일정 데이터 비동기 병렬화**
-  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 참여 스터디가 늘어남에 따라 **다중 일정 API 순차 호출로 인한 로딩 지연**
-  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> FullCalendar 연동 시 **다중 일정 비동기 병렬 호출** 및 **날짜별 단일 이벤트 매핑 구조 간소화**
-  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 캘린더 렌더링 딜레이를 해소하고, `useMemo` 기반 **호스트 권한 분리로 비인가 조작 방어**
+* **다중 스터디 일정 조회 최적화 및 권한 제어**
+  * <img src="https://img.shields.io/badge/Problem-red?style=flat-square"/> 다중 스터디 참여 시 FullCalendar 일정 데이터 요청 누적으로 인한 **렌더링 지연**
+  * <img src="https://img.shields.io/badge/Solution-blue?style=flat-square"/> `Promise.all` 기반 **캘린더 API 병렬 호출**[cite: 1] 및 `useMemo` 기반 **호스트 권한 분리** 적용
+  * <img src="https://img.shields.io/badge/Result-green?style=flat-square"/> 다중 일정의 부드러운 병합 렌더링 달성 및 **비인가 사용자의 일정 조작 방어**
 
-* **사전 검증 기반 클라이언트 파일 업로드 파이프라인**
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 브라우저 단에서 **파일 확장자 및 용량 선검증** 후 `FormData` 전송하여 **잘못된 서버 요청 차단**
-  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 업로드된 프로필 및 썸네일 이미지를 **AWS S3와 연동**해 안정적인 **정적 미디어 서빙 경로** 확립
+* **선검증 기반 미디어 업로드 및 인프라 연동**
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> 브라우저 단에서 **파일 확장자 및 용량 선검증** 후 `FormData` 전송하여 서버 부하 방지
+  * <img src="https://img.shields.io/badge/Focus-orange?style=flat-square"/> **AWS S3** 버킷과 연동하여 스터디 프로필/썸네일 이미지의 **안정적 정적 미디어 서빙** 구축
 
 ---
 
