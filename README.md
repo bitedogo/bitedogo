@@ -40,7 +40,7 @@
 ### 🛠️ Development & AI Productivity Tools
 <p>
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
   <img src="https://img.shields.io/badge/Cursor_AI-000000?style=flat-square&logo=cursor&logoColor=white"/>
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white"/>
   <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000?style=flat-square&logo=IntelliJIDEA&logoColor=white"/>
@@ -61,19 +61,23 @@
 
 <br>
 
-* **서버리스 환경 DB 연결 안정화 및 트랜잭션 최적화**
-  * 서버리스 인스턴스 기동 시 발생하는 커넥션 고갈을 방지하기 위해 **인스턴스당 연결 풀 제한** 및 **DB 재연결 래퍼 로직** 구축
-  * 다중 쓰기 작업에 **TypeORM 원자적 트랜잭션**을 적용하여 간헐적 500 에러 해결 및 데이터 정합성 보장
+* **서버리스 환경 DB 연결 안정화 및 트랜잭션 관리**
+  * Vercel 서버리스 환경의 인스턴스별 풀 확장을 고려해 프로덕션 **TypeORM 커넥션 풀을 인스턴스당 1개로 제한**하고 **유휴·연결 타임아웃** 설정
+  * 끊긴 풀에서 쿼리 실패 시 1회 재연결 후 재시도하는 **`withDatabase` 래퍼**를 설계해 리뷰 API 및 세션 조회에 적용
+  * 릴리즈 노트 미러링 등 다중 쓰기가 한 단위인 작업에 **TypeORM 트랜잭션**을 적용하여 데이터 부분 저장 방지
 
-* **데이터베이스 모델링 및 조회 성능 튜닝**
-  * 유저/앨범/리뷰 핵심 도메인 **외래키(FK) 정규화** 및 댓글·좋아요 대상 **다형 외래키 구조** 설계
-  * 빈번한 목록 조회를 지원하기 위해 앨범 ID, 유저 ID, 알림 생성일자에 **수동 복합 인덱스(B-Tree)** 구축
-  * 다중 조인 및 집계(`COUNT`, `GROUP BY`) 쿼리 튜닝으로 대용량 목록 서빙 지연 최소화
+* **데이터베이스 모델링 및 조회 성능 최적화**
+  * 유저·앨범·리뷰 도메인을 FK로 정규화하고, 댓글·좋아요는 `post_id` / `review_id` / `playlist_id` **nullable FK(exclusive-arc)**로 설계해 대상별 참조 무결성 유지
+  * 알림 목록용 `(user_id, created_at DESC)`, 미읽음용 `(user_id, is_read, created_at DESC)` 등 빈번 조회 조건에 **SQL 복합 인덱스(B-Tree)** 수동 구축
+  * 리뷰·플레이리스트 목록 조회 시 **ID를 선별한 뒤 `COUNT` / `GROUP BY` 집계를 분리**하고 필요 조인만 수행하도록 쿼리 구조 개선
 
-* **외부 API 병렬화 및 보안 인증 파이프라인 구축**
-  * 다중 음원 플랫폼(Spotify, iTunes 등) 순차 조회 병목을 `Promise.all` **병렬 처리 및 캐싱**으로 개선
-  * **Resend API**를 도입해 유효시간(TTL) 기반 임시 토큰 생성 및 **비밀번호 재설정 인증 파이프라인** 구현
-  * **Next.js App Router** 기반 SSR 및 Dynamic OG/Sitemap 구축으로 검색 엔진 최적화(SEO) 환경 완성
+* **외부 API 병렬화 및 이메일 OTP 인증 파이프라인 구축**
+  * Spotify, iTunes, Odesli, Deezer 외부 API 조회를 `Promise.all`로 **서버사이드 병렬 처리**하고 **Next.js `unstable_cache` 및 TTL 캐시**로 반복 호출 최소화
+  * **Resend** 연동으로 이메일 OTP 발송 파이프라인을 구축하고, **인증 코드 단방향 해시 저장 + 10분 TTL 만료** 정책을 적용해 회원가입 및 비밀번호 재설정 구현
+
+* **Next.js App Router 기반 SEO 인프라 완성**
+  * App Router 기반으로 사이트 전역 **메타데이터, Dynamic Open Graph(OG), robots.txt** 설정
+  * 검색 엔진 크롤링 지원을 위해 주요 공개 경로를 수집하는 동적 **`sitemap.ts`** 구축 및 Vercel 프로덕션 운영
 
 ---
 
@@ -112,11 +116,11 @@
 <br>
 
 * **이벤트 기반 비동기 상태 동기화 및 메모리 누수 방지**
-  * 마이페이지 프로필 수정 시 컴포넌트 간 로컬 State 불일치 문제를 해결하기 위해 브라우저 표준 **`CustomEvent` 발행-구독** 구조 도입
-  * 컴포넌트 언마운트 시점에 **`removeEventListener` 클린업 함수**를 철저히 작성해 메모리 누수 원천 차단
+  * 마이페이지 프로필 수정 시 컴포넌트 간 로컬 State 불일치 문제를 해결하기 위해 브라우저 표준 **`CustomEvent` 발행-구독** 구조 도입[cite: 1]
+  * 컴포넌트 언마운트 시점에 **`removeEventListener` 클린업 함수**를 철저히 작성해 메모리 누수 원천 차단[cite: 1]
 
 * **다중 스터디 일정 조회 최적화 및 권한 제어**
-  * FullCalendar 연동 시 다중 스터디 일정 API를 `Promise.all` 기반 **비동기 병렬 호출**로 처리해 렌더링 지연 해소
+  * FullCalendar 연동 시 다중 스터디 일정 API를 `Promise.all` 기반 **비동기 병렬 호출**로 처리해 렌더링 지연 해소[cite: 1]
   * `useMemo` 기반의 호스트 권한 판별 로직을 분리해 비인가 사용자의 일정 조작 방지
 
 * **선검증 기반 미디어 업로드 및 인프라 연동**
